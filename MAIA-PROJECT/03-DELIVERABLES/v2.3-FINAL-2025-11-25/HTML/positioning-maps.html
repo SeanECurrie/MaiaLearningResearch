@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Competitive Positioning Maps - MaiaLearning</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            background: white;
+            color: #333;
+        }
+        
+        .page {
+            max-width: 900px;
+            margin: 0 auto 60px auto;
+            page-break-after: always;
+        }
+        
+        h1 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: #000;
+            border-bottom: 2px solid #000;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            font-size: 22px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #000;
+        }
+        
+        .matrix-container {
+            position: relative;
+            width: 700px;
+            height: 500px;
+            margin: 30px auto;
+            border: 2px solid #000;
+        }
+        
+        /* Quadrant lines */
+        .vertical-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #000;
+        }
+        
+        .horizontal-line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #000;
+        }
+        
+        /* Axis labels */
+        .axis-label {
+            position: absolute;
+            font-weight: bold;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+        
+        .top-label {
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .bottom-label {
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .left-label {
+            left: 15px;
+            top: 50%;
+            transform: rotate(-90deg) translateX(-50%);
+            transform-origin: left center;
+        }
+        
+        .right-label {
+            right: 15px;
+            top: 50%;
+            transform: rotate(90deg) translateX(50%);
+            transform-origin: right center;
+        }
+        
+        /* Quadrant labels */
+        .quadrant-label {
+            position: absolute;
+            color: #999;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .q1-label { top: 10px; right: 10px; }
+        .q2-label { top: 10px; left: 10px; }
+        .q3-label { bottom: 10px; left: 10px; }
+        .q4-label { bottom: 10px; right: 10px; }
+        
+        /* Platform boxes */
+        .platform {
+            position: absolute;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 14px;
+            color: white;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            cursor: default;
+            min-width: 100px;
+        }
+        
+        .platform-name {
+            display: block;
+            margin-bottom: 4px;
+        }
+        
+        .platform-detail {
+            font-size: 11px;
+            font-weight: normal;
+            line-height: 1.3;
+        }
+        
+        .emoji {
+            font-size: 16px;
+            margin-left: 4px;
+        }
+        
+        /* Colors */
+        .blue { background: #4A90E2; }
+        .orange { background: #F5A623; }
+        .red { background: #E74C3C; }
+        .yellow { background: #F5A623; }
+        
+        /* Specific positioning for Map 1 */
+        .scoir-1 { top: 60px; right: 170px; }
+        .schoolinks-1 { top: 130px; right: 40px; }
+        .maia-1 { top: 160px; left: 110px; }
+        .xello-1 { top: 200px; right: 80px; }
+        .naviance-1 { bottom: 140px; right: 100px; }
+        
+        /* Specific positioning for Map 2 */
+        .maia-2 { top: 80px; left: 110px; }
+        .cialfo-2 { top: 80px; right: 80px; }
+        .schoolinks-2 { bottom: 120px; left: 80px; }
+        .scoir-2 { bottom: 120px; left: 280px; }
+        .naviance-2 { bottom: 120px; right: 80px; }
+        .xello-2 { bottom: 200px; left: 120px; }
+        
+        /* Legend */
+        .legend {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f8f8;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        
+        .legend-item {
+            display: inline-block;
+            margin-right: 30px;
+            margin-bottom: 10px;
+        }
+        
+        .legend-icon {
+            font-size: 16px;
+            margin-right: 5px;
+        }
+        
+        /* Strategic options */
+        .strategic-options {
+            margin-top: 30px;
+            line-height: 1.8;
+        }
+        
+        .strategic-options strong {
+            color: #000;
+        }
+        
+        .insights {
+            background: #fff8e1;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #F5A623;
+            line-height: 1.8;
+        }
+        
+        @media print {
+            .page {
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <h1>Competitive Positioning</h1>
+        
+        <p style="font-style: italic; color: #666; margin-bottom: 40px;">
+            Full analysis (12,500+ words) in /04-STRATEGIC-INSIGHTS/competitive-positioning-map.md
+        </p>
+        
+        <h2>Positioning Map 1: Innovation Leadership vs. Market Coverage</h2>
+        
+        <div class="matrix-container">
+            <!-- Quadrant lines -->
+            <div class="vertical-line"></div>
+            <div class="horizontal-line"></div>
+            
+            <!-- Axis labels -->
+            <div class="axis-label top-label">HIGH INNOVATION</div>
+            <div class="axis-label bottom-label">LOW INNOVATION</div>
+            <div class="axis-label left-label">LOW COVERAGE</div>
+            <div class="axis-label right-label">HIGH COVERAGE</div>
+            
+            <!-- Quadrant labels -->
+            <div class="quadrant-label q1-label">Q1</div>
+            <div class="quadrant-label q2-label">Q2</div>
+            <div class="quadrant-label q3-label">Q3</div>
+            <div class="quadrant-label q4-label">Q4</div>
+            
+            <!-- Platforms -->
+            <div class="platform blue scoir-1">
+                <span class="platform-name">SCOIR <span class="emoji">⭐</span></span>
+                <span class="platform-detail">Scoir AI 2.0,<br>Common App depth</span>
+            </div>
+            
+            <div class="platform blue schoolinks-1">
+                <span class="platform-name">SchooLinks <span class="emoji">⭐</span></span>
+                <span class="platform-detail">$80M Series B, Inc. 5000,<br>"Future of CCR"</span>
+            </div>
+            
+            <div class="platform orange maia-1">
+                <span class="platform-name">Maia <span class="emoji">⚪</span></span>
+                <span class="platform-detail">AI letter writing,<br>but undermarketed</span>
+            </div>
+            
+            <div class="platform orange xello-1">
+                <span class="platform-name">Xello <span class="emoji">⚪</span></span>
+                <span class="platform-detail">28-year heritage,<br>awards but no AI</span>
+            </div>
+            
+            <div class="platform red naviance-1">
+                <span class="platform-name">Naviance <span class="emoji">📉</span></span>
+                <span class="platform-detail">Adding AI,<br>defensive</span>
+            </div>
+        </div>
+        
+        <div class="legend">
+            <strong>Legend:</strong><br><br>
+            <span class="legend-item"><span class="legend-icon">⭐</span> = Positioning leaders (winning momentum)</span>
+            <span class="legend-item"><span class="legend-icon">⚪</span> = Established players (holding position)</span>
+            <span class="legend-item"><span class="legend-icon">📉</span> = Declining position (losing ground)</span>
+        </div>
+        
+        <div class="insights">
+            <strong>Key Insights - Q1 (High Innovation + High Coverage):</strong> WHITE SPACE - no occupant - 
+            <strong>Maia Position:</strong> Center (balanced innovation + international coverage) - 
+            <strong>Path Forward:</strong> Move UP (increase innovation via AI) to reach Q1 "International Innovation Leader" - 
+            <strong>SCOIR Trajectory:</strong> Moving UP-RIGHT (specialist → comprehensive)
+        </div>
+        
+        <div class="strategic-options">
+            <strong>Maia's Strategic Options:</strong>
+            <ul style="line-height: 1.8;">
+                <li><strong>Option 1 - "Global AI Leader for International Schools":</strong> Position as the only AI-powered platform built for 70+ countries. Clear differentiation: NO competitor has (international + AI).</li>
+                <li><strong>Option 2 - "Counselor-First Alternative to Software-First Platforms":</strong> Built by counselors for counselors. Differentiates from SCOIR/SchooLinks (software companies) and Naviance (PowerSchool giant).</li>
+                <li><strong>Option 3 - "Comprehensive for International, Not Cluttered Like Naviance":</strong> Modern, clean interface with global reach.</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="page">
+        <h2>Positioning Map 2: Pricing Strategy vs. Geographic Scope</h2>
+        
+        <div class="matrix-container">
+            <!-- Quadrant lines -->
+            <div class="vertical-line"></div>
+            <div class="horizontal-line"></div>
+            
+            <!-- Axis labels -->
+            <div class="axis-label top-label">GLOBAL (70+ countries)</div>
+            <div class="axis-label bottom-label">US-ONLY</div>
+            <div class="axis-label left-label">LOW PRICE</div>
+            <div class="axis-label right-label">HIGH PRICE</div>
+            
+            <!-- Quadrant labels -->
+            <div class="quadrant-label q1-label">Q1</div>
+            <div class="quadrant-label q2-label">Q2</div>
+            <div class="quadrant-label q3-label">Q3</div>
+            <div class="quadrant-label q4-label">Q4</div>
+            
+            <!-- Platforms -->
+            <div class="platform orange maia-2">
+                <span class="platform-name">Maia <span class="emoji">⭐</span></span>
+                <span class="platform-detail">($10)</span>
+            </div>
+            
+            <div class="platform yellow cialfo-2">
+                <span class="platform-name">Cialfo <span class="emoji">⚪</span></span>
+                <span class="platform-detail">($30)</span>
+            </div>
+            
+            <div class="platform yellow schoolinks-2">
+                <span class="platform-name">SchooLinks <span class="emoji">⚪</span></span>
+                <span class="platform-detail">($3.50–5.51)</span>
+            </div>
+            
+            <div class="platform red scoir-2">
+                <span class="platform-name">SCOIR <span class="emoji">🔴</span></span>
+                <span class="platform-detail">($4.80)</span>
+            </div>
+            
+            <div class="platform yellow naviance-2">
+                <span class="platform-name">Naviance <span class="emoji">⚪</span></span>
+                <span class="platform-detail">($8–12 (est.))</span>
+            </div>
+            
+            <div class="platform yellow xello-2">
+                <span class="platform-name">Xello <span class="emoji">⚪</span></span>
+                <span class="platform-detail">($3.60)</span>
+            </div>
+        </div>
+        
+        <div class="legend">
+            <strong>Legend:</strong><br><br>
+            <span class="legend-item"><span class="legend-icon">⭐</span> = Unique positioning (market gap)</span>
+            <span class="legend-item"><span class="legend-icon">⚪</span> = Standard positioning</span>
+            <span class="legend-item"><span class="legend-icon">🔴</span> = Competitive pressure point</span>
+        </div>
+        
+        <div class="insights">
+            <strong>Key Insights - Maia plays TWO games:</strong> International VALUE ($10 vs. Cialfo $30), US PREMIUM ($10 vs. $3.50-6) - 
+            <strong>Q2 (Global + Value Pricing $3-5):</strong> WHITE SPACE - opportunity via tiered pricing - 
+            <strong>Recommended:</strong> Tiered model (Basic $5-6, Plus $8-9, Premium $12-15)
+        </div>
+        
+        <div class="strategic-options">
+            <strong>Pricing Strategy Recommendations:</strong>
+            <ul style="line-height: 1.8;">
+                <li><strong>Launch Tiered Pricing Model ($150-250K, Q1-Q4):</strong> Basic tier ($5-6) captures value-conscious international schools; Plus tier ($8-9) for standard US schools; Premium tier ($12-15) for comprehensive features.</li>
+                <li><strong>Publish Transparent Pricing:</strong> Differentiate from Naviance's opacity. SchooLinks and SCOIR both use pricing transparency as a competitive weapon.</li>
+                <li><strong>International Value Leader:</strong> At $10, Maia is already 3x cheaper than Cialfo ($30) for international markets. This is a major competitive advantage that should be emphasized.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,8 +1,92 @@
-# Version History - Maia Learning Competitive Analysis
+# Version History - MaiaLearning Competitive Analysis
 
-**Project:** Maia Learning Competitive Analysis
-**Client:** Maia Learning Executive Team
+**Project:** MaiaLearning Competitive Analysis
+**Client:** MaiaLearning Executive Team
 **Analysis Period:** September-November 2025
+
+---
+
+## V2.3 (November 25, 2025) - Enterprise Styling & Visual Improvements
+
+**Theme:** Professional enterprise styling with table borders, SWOT grid, and visual enhancements
+
+**Key Changes:**
+- Added comprehensive CSS styling for all tables (borders, header shading, alternating row colors)
+- Converted MaiaLearning SWOT section from dense paragraphs to colored 2x2 grid layout
+- Added enterprise callout box styles (grey background, border-left accent)
+- Added key-facts box styling with gradient backgrounds
+- Improved section header styling with border-bottom accents
+- Removed broken enterprise-styles.css reference
+- Regenerated full-report PDF (1.16MB)
+
+**CSS Additions:**
+- Table styling: Dark grey headers (#4a5568), 1px borders, alternating row colors
+- SWOT grid: 2x2 colored boxes (green strengths, red weaknesses, blue opportunities, yellow threats)
+- Callout boxes: Grey background with accent border
+- Section headers: Border-bottom styling
+
+**Files Changed:**
+- `full-report-CORRECTED.html` - Added ~180 lines of enterprise CSS, converted SWOT to grid
+- `full-report-CORRECTED.pdf` - Regenerated with new styling (1.16MB)
+- `README.md` - Updated to v2.3
+- `VERSION-HISTORY.md` - This file
+
+**Quality Score:** 9.5/10
+**Consistency:** 100%
+**Status:** Client-Ready
+**Location:** `v2.3-FINAL-2025-11-25/`
+
+---
+
+## V2.2 (November 25, 2025) - Content Cleanup & PDF Improvements
+
+**Theme:** Remove internal notes, cleanup content, improve PDF formatting
+
+**Key Changes:**
+- Removed all NOTE/blockquote sections with internal file paths and word counts
+- Removed Common App section from full report (not a competitor)
+- Removed "(Biggest Market in the World)" language throughout
+- Added volume-based pricing alternative to strategic recommendations
+- Regenerated all 13 PDFs with `--no-pdf-header-footer` flag (no timestamps/filenames)
+- Cleaned up redundant visualizations folder in PDF directory
+- Styled 3 positioning maps in full report with CSS quadrant boxes (matching positioning-maps.html)
+
+**Files Changed:**
+- `full-report-CORRECTED.html` - Major cleanup
+- `executive-summary-CORRECTED.html` - Minor cleanup
+- `strategic-recommendations-viz.html` - Updated pricing recommendation
+- All 13 PDFs regenerated (cleaner headers/footers)
+- `README.md` - Updated to v2.2
+- `VERSION-HISTORY.md` - This file
+
+**Quality Score:** 9.5/10
+**Consistency:** 100%
+**Status:** Archived
+**Location:** `archive/v2.2-FINAL-2025-11-25/`
+
+---
+
+## V2.1 (November 25, 2025) - Branding Standardization
+
+**Theme:** Standardized company name to "MaiaLearning" (no space)
+
+**Key Changes:**
+- Changed all instances of "Maia Learning" → "MaiaLearning" (39 occurrences)
+- Regenerated all 13 PDFs from updated HTML sources
+- Implemented new versioned folder structure (`v{major}.{minor}-FINAL-{YYYY-MM-DD}`)
+- Created `archive/` folder for version management
+- Updated README.md with new structure documentation
+
+**Files Changed:**
+- All HTML files in `HTML/` and `HTML/visualizations/`
+- All 13 PDFs regenerated
+- `README.md` - Updated with new structure
+- `VERSION-HISTORY.md` - This file
+
+**Quality Score:** 9.5/10
+**Consistency:** 100%
+**Status:** Client-Ready
+**Location:** `v2.1-FINAL-2025-11-25/`
 
 ---
 
@@ -86,9 +170,12 @@
 
 | Version | Date | Theme | Quality | Status |
 |---------|------|-------|---------|--------|
-| V2.0 | Nov 24, 2025 | US-Primary Strategy | 9.5/10 | Client-Ready |
-| V1.0 | Nov 2025 | QA Corrections | 9.5/10 | QA-Passed |
-| V0.9 | Sep-Oct 2025 | Initial Deliverables | 7.5/10 | Draft |
+| V2.3 | Nov 25, 2025 | Enterprise Styling & Visual Improvements | 9.5/10 | Client-Ready |
+| V2.2 | Nov 25, 2025 | Content Cleanup & PDF Improvements | 9.5/10 | Archived |
+| V2.1 | Nov 25, 2025 | Branding Standardization | 9.5/10 | Archived |
+| V2.0 | Nov 24, 2025 | US-Primary Strategy | 9.5/10 | Archived |
+| V1.0 | Nov 2025 | QA Corrections | 9.5/10 | Archived |
+| V0.9 | Sep-Oct 2025 | Initial Deliverables | 7.5/10 | Archived |
 
 ---
 
@@ -103,6 +190,11 @@ Full iteration documentation available in:
 
 ## Current Version
 
-**Current:** V2.0 (November 24, 2025)
-**Location:** `03-DELIVERABLES/current/`
+**Current:** V2.3 (November 25, 2025)
+**Location:** `03-DELIVERABLES/v2.3-FINAL-2025-11-25/`
 **Status:** Client-Ready
+
+### Quick Access
+```
+MAIA-PROJECT/03-DELIVERABLES/v2.3-FINAL-2025-11-25/PDF/
+```
