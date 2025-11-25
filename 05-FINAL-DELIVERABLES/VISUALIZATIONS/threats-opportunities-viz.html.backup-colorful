@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Threats & Opportunities - Maia Learning</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #ffffff;
+            color: #333;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 20px;
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding: 12px 15px;
+            border-radius: 5px;
+        }
+
+        h2.threats {
+            background: #ffe8e8;
+            color: #e74c3c;
+        }
+
+        h2.opportunities {
+            background: #e8f8e8;
+            color: #27ae60;
+        }
+
+        .summary {
+            background: #f8f9fa;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 5px solid #3498db;
+            display: flex;
+            gap: 50px;
+        }
+
+        .summary-col {
+            flex: 1;
+        }
+
+        .summary-title {
+            font-weight: 700;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .summary-stat {
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+            background: white;
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 10px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        th.threats-header {
+            background: #e74c3c;
+        }
+
+        th.opportunities-header {
+            background: #27ae60;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 13px;
+            vertical-align: top;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        .item-number {
+            font-weight: 700;
+            font-size: 16px;
+            color: #2c3e50;
+            text-align: center;
+            width: 40px;
+        }
+
+        .priority-very-high {
+            border-left: 5px solid #e74c3c;
+        }
+
+        .priority-medium-high {
+            border-left: 5px solid #f39c12;
+        }
+
+        .priority-low-medium, .priority-medium {
+            border-left: 5px solid #27ae60;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .badge-very-high {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .badge-medium-high {
+            background: #f39c12;
+            color: white;
+        }
+
+        .badge-low-medium, .badge-medium {
+            background: #27ae60;
+            color: white;
+        }
+
+        .item-title {
+            font-weight: 600;
+            font-size: 14px;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .item-desc {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .meta {
+            font-size: 12px;
+            color: #7f8c8d;
+            margin-top: 8px;
+        }
+
+        .meta strong {
+            color: #2c3e50;
+        }
+
+        .tier-header {
+            background: #34495e;
+            color: white;
+            padding: 10px 15px;
+            font-weight: 700;
+            font-size: 14px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Threats & Opportunities for Maia Learning</h1>
+    <p style="color: #7f8c8d; margin-bottom: 30px;">Strategic Assessment - Prioritized by Impact and Urgency | November 2025</p>
+
+    <div class="summary">
+        <div class="summary-col">
+            <div class="summary-title">⚠️ Competitive Threats (8 Total)</div>
+            <div class="summary-stat">
+                • 3 Very High Priority<br>
+                • 3 Medium-High Priority<br>
+                • 2 Low-Medium Priority
+            </div>
+        </div>
+        <div class="summary-col">
+            <div class="summary-title">✨ Market Opportunities (10 Total)</div>
+            <div class="summary-stat">
+                • 3 Very High Priority<br>
+                • 4 Medium-High Priority<br>
+                • 3 Medium Priority
+            </div>
+        </div>
+    </div>
+
+    <!-- THREATS -->
+    <h2 class="threats">⚠️ Competitive Threats</h2>
+
+    <div class="tier-header">🔴 Very High Priority Threats</div>
+    <table>
+        <thead>
+            <tr>
+                <th class="threats-header" style="width: 5%;">#</th>
+                <th class="threats-header" style="width: 8%;">Priority</th>
+                <th class="threats-header" style="width: 57%;">Threat Description</th>
+                <th class="threats-header" style="width: 15%;">Urgency & Timeline</th>
+                <th class="threats-header" style="width: 15%;">Mitigation</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="priority-very-high">
+                <td class="item-number">1</td>
+                <td><span class="badge badge-very-high">🔴 VERY HIGH</span></td>
+                <td>
+                    <div class="item-title">SCOIR's AI & Innovation Leadership</div>
+                    <div class="item-desc">SCOIR's Scoir AI 2.0 (Jan 2025) with acceptance predictions, college list balancing, and 40-50% annual growth directly targets Maia's US private school customer base. Superior AI and high satisfaction (4.5-4.7/5) making SCOIR the "modern alternative."</div>
+                    <div class="meta"><strong>Impact:</strong> US market share loss, positioning as "behind on innovation"</div>
+                </td>
+                <td>
+                    <strong>🔴 CRITICAL</strong><br><br>
+                    6-12 months to close gap or risk permanent disadvantage
+                </td>
+                <td>
+                    Develop predictive AI, audit Common App integration, emphasize international advantage, match $4.80 pricing via tiers
+                </td>
+            </tr>
+            <tr class="priority-very-high">
+                <td class="item-number">2</td>
+                <td><span class="badge badge-very-high">🔴 VERY HIGH</span></td>
+                <td>
+                    <div class="item-title">AI Gap Becoming Insurmountable</div>
+                    <div class="item-desc">AI transitioning from "nice-to-have" to table stakes. Within 12-18 months, platforms without advanced AI will be perceived as "legacy." Maia's letter-writing AI insufficient vs. SCOIR/SchooLinks predictive analytics and conversational assistants.</div>
+                    <div class="meta"><strong>Impact:</strong> Grouped with "legacy" platforms (Naviance) vs. "modern" (SCOIR/SchooLinks)</div>
+                </td>
+                <td>
+                    <strong>🔴 CRITICAL</strong><br><br>
+                    6-month window before permanent disadvantage
+                </td>
+                <td>
+                    Partner with AI provider for 3-6 month deployment (vs. 9-12 months in-house). Invest $500K-1M
+                </td>
+            </tr>
+            <tr class="priority-very-high">
+                <td class="item-number">3</td>
+                <td><span class="badge badge-very-high">🔴 VERY HIGH</span></td>
+                <td>
+                    <div class="item-title">Pricing Gap in US Market</div>
+                    <div class="item-desc">Maia's $10/student is 2-3x more expensive than US competitors (SchooLinks $3.50-5.51, Xello $3.60, SCOIR $4.80). In US market, premium difficult to justify without clear differentiation. Schools choosing value alternatives.</div>
+                    <div class="meta"><strong>Impact:</strong> Cannot compete in price-sensitive segments, revenue constraint in US growth</div>
+                </td>
+                <td>
+                    <strong>🟡 HIGH</strong><br><br>
+                    12 months to address for US market defense
+                </td>
+                <td>
+                    Option A: Justify premium (match SCOIR innovation). Option B: Tiered pricing ($5-6 Basic, $8-9 Plus, $12-15 Premium)
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="tier-header">🟡 Medium-High Priority Threats</div>
+    <table>
+        <thead>
+            <tr>
+                <th class="threats-header" style="width: 5%;">#</th>
+                <th class="threats-header" style="width: 8%;">Priority</th>
+                <th class="threats-header" style="width: 57%;">Threat Description</th>
+                <th class="threats-header" style="width: 15%;">Urgency & Timeline</th>
+                <th class="threats-header" style="width: 15%;">Mitigation</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="priority-medium-high">
+                <td class="item-number">4</td>
+                <td><span class="badge badge-medium-high">🟡 MED-HIGH</span></td>
+                <td>
+                    <div class="item-title">SchooLinks' Aggressive Pricing & State Compliance</div>
+                    <div class="item-desc">$88.3M funding, $3.50-5.51/student (50% less than Maia), Texas CCMR dominance, Agentic Layer AI (4 AI agents). While targeting different primary market (US public districts), creates indirect pricing pressure and raises innovation bar.</div>
+                    <div class="meta"><strong>Impact:</strong> Pricing expectations set low, innovation bar raised, potential pivot to private schools</div>
+                </td>
+                <td>
+                    <strong>🟢 MEDIUM</strong><br><br>
+                    Monitor closely, 12-24 month pivot timeline if occurs
+                </td>
+                <td>
+                    Avoid direct competition in US public districts. Defend US private schools. Match AI innovation.
+                </td>
+            </tr>
+            <tr class="priority-medium-high">
+                <td class="item-number">5</td>
+                <td><span class="badge badge-medium-high">🟡 MED-HIGH</span></td>
+                <td>
+                    <div class="item-title">Xello's Statewide Contracts & Career Dominance</div>
+                    <div class="item-desc">Statewide FREE contracts (Florida K-12, New Hampshire HS), $3.60/student, 28-year career expertise, 14x engagement. Geographic lock-out in FL/NH markets, potential 2-3 more statewide contracts blocking expansion.</div>
+                    <div class="meta"><strong>Impact:</strong> FL/NH off-limits, 2-3 more states potentially blocked, career competition for comprehensive positioning</div>
+                </td>
+                <td>
+                    <strong>🟢 MEDIUM</strong><br><br>
+                    Threat stable, 12-24 months for additional state contracts
+                </td>
+                <td>
+                    Avoid Xello strongholds. Differentiate on college-prep depth. Focus international (Xello is North America only).
+                </td>
+            </tr>
+            <tr class="priority-medium-high">
+                <td class="item-number">6</td>
+                <td><span class="badge badge-medium-high">🟡 MED-HIGH</span></td>
+                <td>
+                    <div class="item-title">SCOIR Entering International Market</div>
+                    <div class="item-desc">Currently US-only, but SCOIR could expand internationally (UK, Australia, Asia-Pacific) with $28.25M funding. Would challenge Maia's 70+ country moat with superior AI (2.0) and high satisfaction (4.7/5). If SCOIR replicates internationally, Maia's unique advantage erodes.</div>
+                    <div class="meta"><strong>Impact:</strong> Loss of "only global comprehensive platform" advantage, direct competition with innovation leader</div>
+                </td>
+                <td>
+                    <strong>🟡 MEDIUM</strong><br><br>
+                    12-24 months before international pilot, 2-3 years for meaningful presence
+                </td>
+                <td>
+                    Maintain innovation parity (close AI gap). Emphasize deep localization (12+ languages). Strengthen relationships in key markets.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="tier-header">🟢 Low-Medium Priority Threats</div>
+    <table>
+        <thead>
+            <tr>
+                <th class="threats-header" style="width: 5%;">#</th>
+                <th class="threats-header" style="width: 8%;">Priority</th>
+                <th class="threats-header" style="width: 57%;">Threat Description</th>
+                <th class="threats-header" style="width: 15%;">Urgency & Timeline</th>
+                <th class="threats-header" style="width: 15%;">Mitigation</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="priority-low-medium">
+                <td class="item-number">7</td>
+                <td><span class="badge badge-low-medium">🟢 LOW-MED</span></td>
+                <td>
+                    <div class="item-title">Market Consolidation & M&A</div>
+                    <div class="item-desc">EdTech consolidation wave (PowerSchool+Naviance, Manifest+Cialfo). Maia could be acquisition target (lose independence) or face strengthened combined competitors with more resources. PE firms may pursue "roll-up" strategy consolidating 10-15 platforms.</div>
+                    <div class="meta"><strong>Impact:</strong> Potential loss of independence, or strengthened combined competitors</div>
+                </td>
+                <td>
+                    <strong>🟢 LOW</strong><br><br>
+                    2026-2030 timeline, strategic consideration
+                </td>
+                <td>
+                    Develop M&A position (remain independent, be acquired, or become acquirer). Monitor integrations for opportunities.
+                </td>
+            </tr>
+            <tr class="priority-low-medium">
+                <td class="item-number">8</td>
+                <td><span class="badge badge-low-medium">🟢 LOW-MED</span></td>
+                <td>
+                    <div class="item-title">Naviance Improving (PowerBuddy AI)</div>
+                    <div class="item-desc">PowerBuddy AI (2024-2025) attempts to modernize Naviance. If successful, could defend 40% market share and reduce Naviance switcher opportunities. However, Vista Equity cost-cutting suggests significant investment unlikely.</div>
+                    <div class="meta"><strong>Impact:</strong> Fewer Naviance switchers available if satisfaction improves</div>
+                </td>
+                <td>
+                    <strong>🟢 LOW</strong><br><br>
+                    12-24 months to assess PowerBuddy AI impact
+                </td>
+                <td>
+                    Target Naviance switchers aggressively (before choosing SCOIR). Monitor PowerBuddy AI evolution. Differentiate on service.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- OPPORTUNITIES -->
+    <h2 class="opportunities">✨ Market Opportunities</h2>
+
+    <div class="tier-header">🔴 Very High Priority Opportunities</div>
+    <table>
+        <thead>
+            <tr>
+                <th class="opportunities-header" style="width: 5%;">#</th>
+                <th class="opportunities-header" style="width: 8%;">Priority</th>
+                <th class="opportunities-header" style="width: 47%;">Opportunity Description</th>
+                <th class="opportunities-header" style="width: 13%;">Investment & Timeline</th>
+                <th class="opportunities-header" style="width: 12%;">Expected ROI</th>
+                <th class="opportunities-header" style="width: 15%;">Execution</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="priority-very-high">
+                <td class="item-number">1</td>
+                <td><span class="badge badge-very-high">🔴 VERY HIGH</span></td>
+                <td>
+                    <div class="item-title">International Innovation Leader Position</div>
+                    <div class="item-desc">NO platform combines international presence (70+ countries) with innovation leadership (SCOIR-level AI). White space: "International Innovation Leader" = "Global SCOIR." 13,000+ international schools, $60-84M TAM, growing 5-7% annually.</div>
+                    <div class="meta"><strong>Unique Advantage:</strong> First-mover to combine both international reach + advanced AI</div>
+                </td>
+                <td>
+                    <strong>$1-1.5M</strong><br>
+                    Q1-Q2 2026 (AI)<br>
+                    2027 (branding)
+                </td>
+                <td>
+                    15-25% int'l market share by 2030<br><br>
+                    $10-20M annual revenue
+                </td>
+                <td>
+                    Close AI gap → Launch mobile app → Establish "Global Innovation Leader" brand
+                </td>
+            </tr>
+            <tr class="priority-very-high">
+                <td class="item-number">2</td>
+                <td><span class="badge badge-very-high">🔴 VERY HIGH</span></td>
+                <td>
+                    <div class="item-title">First-Mover Native Mobile App</div>
+                    <div class="item-desc">NO CCR platform has native mobile app. Students are mobile-first generation expecting native app experiences. 12-18 month first-mover advantage before SCOIR/SchooLinks follow. 2-3x higher engagement potential with push notifications, offline access.</div>
+                    <div class="meta"><strong>Unique Advantage:</strong> 12-18 month window as ONLY platform with native app</div>
+                </td>
+                <td>
+                    <strong>$300K-500K</strong><br>
+                    Q3 2026 - Q1 2027<br>
+                    (9-12 months)
+                </td>
+                <td>
+                    2-3x engagement<br><br>
+                    12-18 month differentiation<br><br>
+                    Higher retention
+                </td>
+                <td>
+                    Build React Native or Flutter app → Beta Q4 2026 → Launch Q1 2027 → Marketing as "first"
+                </td>
+            </tr>
+            <tr class="priority-very-high">
+                <td class="item-number">3</td>
+                <td><span class="badge badge-very-high">🔴 VERY HIGH</span></td>
+                <td>
+                    <div class="item-title">Target Naviance's Dissatisfied Customers</div>
+                    <div class="item-desc">Naviance has 40% market share but poor satisfaction (3.2/5). 300-600 schools/year considering switch. 3,000-4,000 US private schools using Naviance = addressable market. Maia offers comprehensive features (matching Naviance) + modern tech + service excellence.</div>
+                    <div class="meta"><strong>Unique Advantage:</strong> Comprehensive like Naviance, innovative like SCOIR, global unlike both</div>
+                </td>
+                <td>
+                    <strong>$200K-400K</strong><br>
+                    Q1-Q4 2026<br>
+                    (ongoing campaign)
+                </td>
+                <td>
+                    20-40 schools year 1<br><br>
+                    $50-100K ARR<br><br>
+                    3-4x return by year 3
+                </td>
+                <td>
+                    Identify targets → NAIS conference → Free migration → Dedicated onboarding → Scale to 50-100/year
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="tier-header">🟡 Medium-High Priority Opportunities</div>
+    <table>
+        <thead>
+            <tr>
+                <th class="opportunities-header" style="width: 5%;">#</th>
+                <th class="opportunities-header" style="width: 8%;">Priority</th>
+                <th class="opportunities-header" style="width: 47%;">Opportunity Description</th>
+                <th class="opportunities-header" style="width: 13%;">Investment & Timeline</th>
+                <th class="opportunities-header" style="width: 12%;">Expected ROI</th>
+                <th class="opportunities-header" style="width: 15%;">Execution</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="priority-medium-high">
+                <td class="item-number">4</td>
+                <td><span class="badge badge-medium-high">🟡 MED-HIGH</span></td>
+                <td>
+                    <div class="item-title">Tiered Pricing Model</div>
+                    <div class="item-desc">Basic ($5-6), Plus ($8-9), Premium ($12-15) tiers expand addressable market 3-5x. Enables competition with value leaders while maintaining premium tier. Feature differentiation ensures value clear at each level.</div>
+                </td>
+                <td>
+                    <strong>$150K-250K</strong><br>
+                    Q1-Q4 2026<br>
+                    (launch Q4)
+                </td>
+                <td>
+                    +17-70% revenue<br><br>
+                    3-5x addressable market expansion
+                </td>
+                <td>
+                    Design tiers → Build system → Beta Q3 → Full launch Q4 → Migrate existing customers
+                </td>
+            </tr>
+            <tr class="priority-medium-high">
+                <td class="item-number">5</td>
+                <td><span class="badge badge-medium-high">🟡 MED-HIGH</span></td>
+                <td>
+                    <div class="item-title">Value International Platform</div>
+                    <div class="item-desc">White space: NO platform combines low pricing ($5-6) with international presence (70+ countries). Target emerging markets (Latin America, Africa, Southeast Asia) with Basic tier. 5,000-8,000 schools addressable, growing 8-12% annually.</div>
+                </td>
+                <td>
+                    <strong>$100K-200K</strong><br>
+                    Q3 2026 launch<br>
+                    (with tiered pricing)
+                </td>
+                <td>
+                    750-2,000 schools<br><br>
+                    $1.1-3.6M annual revenue<br><br>
+                    2-3x return
+                </td>
+                <td>
+                    Launch Basic tier globally → Target emerging markets → Regional conferences → Scale 2027-2030
+                </td>
+            </tr>
+            <tr class="priority-medium-high">
+                <td class="item-number">6</td>
+                <td><span class="badge badge-medium-high">🟡 MED-HIGH</span></td>
+                <td>
+                    <div class="item-title">Enhanced AI Career Exploration</div>
+                    <div class="item-desc">"AI Career Coach" - conversational assistant for career exploration, interest-career matching, pathway planning, WBL recommendations. Differentiates from college-only platforms (SCOIR) and career-only platforms (Xello) = "AI for both college AND career."</div>
+                </td>
+                <td>
+                    <strong>$200K-400K</strong><br>
+                    Q2-Q4 2026<br>
+                    (with AI 2.0)
+                </td>
+                <td>
+                    Comprehensive positioning<br><br>
+                    Unique "college+career AI"<br><br>
+                    Higher engagement
+                </td>
+                <td>
+                    Develop concurrent with Maia AI 2.0 → Train on career data → Beta Q3 → Launch Q4 2026
+                </td>
+            </tr>
+            <tr class="priority-medium-high">
+                <td class="item-number">7</td>
+                <td><span class="badge badge-medium-high">🟡 MED-HIGH</span></td>
+                <td>
+                    <div class="item-title">Publish Customer Reviews & Testimonials</div>
+                    <div class="item-desc">Satisfaction is major differentiator (SCOIR 4.7 winning, Naviance 3.2 losing). Maia has NO public reviews. IF satisfaction ≥4.0/5, publishing creates massive advantage. Schools research via Capterra, G2, TrustRadius before buying.</div>
+                </td>
+                <td>
+                    <strong>$20K-50K</strong><br>
+                    Q1-Q4 2026<br>
+                    (survey Q1)
+                </td>
+                <td>
+                    VERY HIGH if satisfaction ≥4.0<br><br>
+                    Visible competitive advantage vs. poor satisfaction competitors
+                </td>
+                <td>
+                    Survey customers (NPS) → IF ≥4.0, solicit reviews → Target 50-100 reviews → Feature on website/sales
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="tier-header">🟢 Medium Priority Opportunities</div>
+    <table>
+        <thead>
+            <tr>
+                <th class="opportunities-header" style="width: 5%;">#</th>
+                <th class="opportunities-header" style="width: 8%;">Priority</th>
+                <th class="opportunities-header" style="width: 47%;">Opportunity Description</th>
+                <th class="opportunities-header" style="width: 13%;">Investment & Timeline</th>
+                <th class="opportunities-header" style="width: 12%;">Expected ROI</th>
+                <th class="opportunities-header" style="width: 15%;">Execution</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="priority-medium">
+                <td class="item-number">8</td>
+                <td><span class="badge badge-medium">🟢 MEDIUM</span></td>
+                <td>
+                    <div class="item-title">Statewide Global Partnerships</div>
+                    <div class="item-desc">Country-level contracts (Singapore MOE, UAE, Qatar) or international school associations (IB Organization 5,500+ schools). Replicate Xello's statewide model internationally. Guaranteed market access via state/association funding.</div>
+                </td>
+                <td>
+                    <strong>$100K-300K</strong><br>
+                    Q3 2026 - 2027<br>
+                    (12-24 month sales cycles)
+                </td>
+                <td>
+                    1,000-3,000 schools via partnerships<br><br>
+                    $600K-1.2M annual revenue
+                </td>
+                <td>
+                    Identify targets → Develop proposals → Negotiate 2027 → Pilot 2027-2028 → Scale 2029-2030
+                </td>
+            </tr>
+            <tr class="priority-medium">
+                <td class="item-number">9</td>
+                <td><span class="badge badge-medium">🟢 MEDIUM</span></td>
+                <td>
+                    <div class="item-title">Strategic Acquisitions</div>
+                    <div class="item-desc">Acquire AI technology ($2-5M), regional platforms ($2-12M), mobile teams ($1-3M), or specialized tools ($5-15M) to accelerate vs. organic development. Market consolidating - Maia could become acquirer vs. being acquired.</div>
+                </td>
+                <td>
+                    <strong>$2-20M</strong><br>
+                    Q3 2026 - 2027<br>
+                    (strategy + execution)
+                </td>
+                <td>
+                    6-12 month acceleration (AI)<br><br>
+                    Instant market share (regional)<br><br>
+                    2-5x over 5 years
+                </td>
+                <td>
+                    Develop M&A strategy → Identify targets → Due diligence → Negotiate → Integrate 12-18 months
+                </td>
+            </tr>
+            <tr class="priority-medium">
+                <td class="item-number">10</td>
+                <td><span class="badge badge-medium">🟢 MEDIUM</span></td>
+                <td>
+                    <div class="item-title">Enhanced Work-Based Learning Platform</div>
+                    <div class="item-desc">Enhance WBL to credible depth (not best-in-class like SchooLinks). Opportunity marketplace, tracking, counselor dashboard, state compliance reporting. Goal: Ensure WBL features don't become gap preventing sales.</div>
+                </td>
+                <td>
+                    <strong>$100K-200K</strong><br>
+                    Q3-Q4 2026<br>
+                    (6 months)
+                </td>
+                <td>
+                    WBL credibility<br><br>
+                    No feature gap<br><br>
+                    Comprehensive positioning maintained
+                </td>
+                <td>
+                    Assess current features → Build marketplace → Enhance tracking → Counselor dashboard → State compliance
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

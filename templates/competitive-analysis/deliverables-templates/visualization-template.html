@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Visualization Title] - [Company Name] Competitive Analysis</title>
+    <style>
+        /* ============================================
+           ENTERPRISE THEME - Color Variables
+           ============================================ */
+        :root {
+            /* Primary Colors - Professional Blues */
+            --enterprise-primary: #1e3a5f;
+            --enterprise-secondary: #2c5282;
+            --enterprise-accent: #3182ce;
+            --enterprise-light: #ebf8ff;
+
+            /* Neutral Colors - Professional Grays */
+            --enterprise-dark: #1a202c;
+            --enterprise-gray-800: #2d3748;
+            --enterprise-gray-600: #4a5568;
+            --enterprise-gray-400: #a0aec0;
+            --enterprise-gray-200: #e2e8f0;
+            --enterprise-gray-100: #f7fafc;
+            --enterprise-white: #ffffff;
+
+            /* Status Colors */
+            --status-success: #38a169;
+            --status-warning: #d69e2e;
+            --status-danger: #e53e3e;
+            --status-info: #3182ce;
+
+            /* Chart Colors - Professional Palette */
+            --chart-color-1: #1e3a5f;
+            --chart-color-2: #2c5282;
+            --chart-color-3: #3182ce;
+            --chart-color-4: #63b3ed;
+            --chart-color-5: #4fd1c5;
+            --chart-color-6: #38a169;
+            --chart-color-7: #d69e2e;
+            --chart-color-8: #ed8936;
+
+            /* Typography */
+            --font-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --font-heading: 'Segoe UI Semibold', 'Segoe UI', Tahoma, sans-serif;
+
+            /* Spacing */
+            --spacing-xs: 0.25rem;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --spacing-xxl: 3rem;
+        }
+
+        /* ============================================
+           BASE STYLES
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            font-size: 11pt;
+            line-height: 1.6;
+            color: var(--enterprise-dark);
+            background-color: var(--enterprise-white);
+        }
+
+        /* ============================================
+           PAGE LAYOUT
+           ============================================ */
+        .page {
+            width: 100%;
+            max-width: 11in;
+            min-height: 8.5in;
+            margin: 0 auto;
+            padding: var(--spacing-xl);
+            background-color: var(--enterprise-white);
+        }
+
+        /* ============================================
+           HEADER SECTION
+           ============================================ */
+        .header {
+            background: linear-gradient(135deg, var(--enterprise-primary) 0%, var(--enterprise-secondary) 100%);
+            color: var(--enterprise-white);
+            padding: var(--spacing-xl);
+            margin: calc(var(--spacing-xl) * -1);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .header-title {
+            flex: 1;
+        }
+
+        .header-title h1 {
+            font-family: var(--font-heading);
+            font-size: 24pt;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+            letter-spacing: -0.5px;
+        }
+
+        .header-subtitle {
+            font-size: 14pt;
+            opacity: 0.9;
+        }
+
+        .header-meta {
+            text-align: right;
+            font-size: 10pt;
+            opacity: 0.85;
+        }
+
+        .header-meta p {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        /* ============================================
+           SECTION STYLES
+           ============================================ */
+        .section {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 16pt;
+            color: var(--enterprise-primary);
+            border-bottom: 2px solid var(--enterprise-accent);
+            padding-bottom: var(--spacing-sm);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .section-subtitle {
+            font-family: var(--font-heading);
+            font-size: 13pt;
+            color: var(--enterprise-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        /* ============================================
+           CHART CONTAINERS
+           ============================================ */
+        .chart-container {
+            background-color: var(--enterprise-gray-100);
+            border: 1px solid var(--enterprise-gray-200);
+            border-radius: 8px;
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .chart-container-full {
+            min-height: 400px;
+        }
+
+        .chart-container-half {
+            min-height: 250px;
+        }
+
+        .chart-title {
+            font-family: var(--font-heading);
+            font-size: 12pt;
+            color: var(--enterprise-gray-800);
+            margin-bottom: var(--spacing-md);
+            text-align: center;
+        }
+
+        .chart-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+            background-color: var(--enterprise-white);
+            border: 2px dashed var(--enterprise-gray-400);
+            border-radius: 4px;
+            color: var(--enterprise-gray-600);
+            font-style: italic;
+        }
+
+        /* Two-column chart layout */
+        .chart-row {
+            display: flex;
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .chart-col {
+            flex: 1;
+        }
+
+        /* ============================================
+           TABLE STYLES
+           ============================================ */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: var(--spacing-lg);
+            font-size: 10pt;
+        }
+
+        .data-table thead {
+            background-color: var(--enterprise-primary);
+            color: var(--enterprise-white);
+        }
+
+        .data-table th {
+            padding: var(--spacing-sm) var(--spacing-md);
+            text-align: left;
+            font-weight: 600;
+            font-family: var(--font-heading);
+        }
+
+        .data-table td {
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-bottom: 1px solid var(--enterprise-gray-200);
+        }
+
+        .data-table tbody tr:nth-child(even) {
+            background-color: var(--enterprise-gray-100);
+        }
+
+        .data-table tbody tr:hover {
+            background-color: var(--enterprise-light);
+        }
+
+        /* Table cell alignments */
+        .text-center { text-align: center; }
+        .text-right { text-align: right; }
+        .text-left { text-align: left; }
+
+        /* ============================================
+           STATUS BADGES
+           ============================================ */
+        .badge {
+            display: inline-block;
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: 4px;
+            font-size: 9pt;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .badge-high {
+            background-color: var(--status-danger);
+            color: var(--enterprise-white);
+        }
+
+        .badge-medium {
+            background-color: var(--status-warning);
+            color: var(--enterprise-dark);
+        }
+
+        .badge-low {
+            background-color: var(--status-success);
+            color: var(--enterprise-white);
+        }
+
+        .badge-info {
+            background-color: var(--status-info);
+            color: var(--enterprise-white);
+        }
+
+        /* ============================================
+           FEATURE STATUS INDICATORS
+           ============================================ */
+        .feature-yes {
+            color: var(--status-success);
+            font-weight: 600;
+        }
+
+        .feature-no {
+            color: var(--status-danger);
+            font-weight: 600;
+        }
+
+        .feature-partial {
+            color: var(--status-warning);
+            font-weight: 600;
+        }
+
+        /* ============================================
+           CARDS AND BOXES
+           ============================================ */
+        .info-card {
+            background-color: var(--enterprise-light);
+            border-left: 4px solid var(--enterprise-accent);
+            padding: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .info-card-title {
+            font-family: var(--font-heading);
+            font-size: 11pt;
+            color: var(--enterprise-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .highlight-box {
+            background-color: var(--enterprise-gray-100);
+            border: 1px solid var(--enterprise-gray-200);
+            border-radius: 8px;
+            padding: var(--spacing-lg);
+            text-align: center;
+        }
+
+        .highlight-number {
+            font-family: var(--font-heading);
+            font-size: 36pt;
+            color: var(--enterprise-primary);
+            line-height: 1;
+        }
+
+        .highlight-label {
+            font-size: 10pt;
+            color: var(--enterprise-gray-600);
+            margin-top: var(--spacing-sm);
+        }
+
+        /* ============================================
+           GRID LAYOUTS
+           ============================================ */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-lg);
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-lg);
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-md);
+        }
+
+        /* ============================================
+           FOOTER SECTION
+           ============================================ */
+        .footer {
+            margin-top: var(--spacing-xxl);
+            padding-top: var(--spacing-lg);
+            border-top: 2px solid var(--enterprise-gray-200);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 9pt;
+            color: var(--enterprise-gray-600);
+        }
+
+        .footer-left {
+            display: flex;
+            gap: var(--spacing-lg);
+        }
+
+        .footer-right {
+            text-align: right;
+        }
+
+        /* ============================================
+           SOURCE CITATIONS
+           ============================================ */
+        .sources {
+            font-size: 9pt;
+            color: var(--enterprise-gray-600);
+            margin-top: var(--spacing-lg);
+            padding-top: var(--spacing-md);
+            border-top: 1px solid var(--enterprise-gray-200);
+        }
+
+        .sources-title {
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* ============================================
+           PRINT STYLES
+           ============================================ */
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            .page {
+                width: 11in;
+                height: 8.5in;
+                padding: 0.5in;
+                margin: 0;
+                page-break-after: always;
+            }
+
+            .header {
+                margin: -0.5in;
+                margin-bottom: 0.5in;
+                padding: 0.4in;
+            }
+
+            .no-print {
+                display: none !important;
+            }
+
+            .page-break {
+                page-break-before: always;
+            }
+
+            /* Ensure backgrounds print */
+            .data-table thead,
+            .badge,
+            .highlight-box,
+            .info-card {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+        }
+
+        @page {
+            size: 11in 8.5in landscape;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- ============================================
+             HEADER SECTION
+             ============================================ -->
+        <header class="header">
+            <div class="header-content">
+                <div class="header-title">
+                    <h1>[Visualization Title]</h1>
+                    <p class="header-subtitle">[Company Name] Competitive Analysis</p>
+                </div>
+                <div class="header-meta">
+                    <p><strong>Date:</strong> [Month Year]</p>
+                    <p><strong>Version:</strong> [1.0]</p>
+                    <p><strong>Status:</strong> [Draft/Final]</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- ============================================
+             MAIN CONTENT AREA
+             ============================================ -->
+        <main>
+            <!-- Section 1: Key Metrics -->
+            <section class="section">
+                <h2 class="section-title">[Section 1 Title]</h2>
+
+                <!-- Metric Highlights Grid -->
+                <div class="grid-4">
+                    <div class="highlight-box">
+                        <div class="highlight-number">[N]</div>
+                        <div class="highlight-label">[Metric 1 Label]</div>
+                    </div>
+                    <div class="highlight-box">
+                        <div class="highlight-number">$[X]M</div>
+                        <div class="highlight-label">[Metric 2 Label]</div>
+                    </div>
+                    <div class="highlight-box">
+                        <div class="highlight-number">[X]%</div>
+                        <div class="highlight-label">[Metric 3 Label]</div>
+                    </div>
+                    <div class="highlight-box">
+                        <div class="highlight-number">[N]</div>
+                        <div class="highlight-label">[Metric 4 Label]</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: Primary Chart -->
+            <section class="section">
+                <h2 class="section-title">[Section 2 Title]</h2>
+
+                <div class="chart-container chart-container-full">
+                    <h3 class="chart-title">[Chart Title]</h3>
+                    <div class="chart-placeholder">
+                        [Insert chart here - D3.js, Chart.js, or static image]
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Data Table -->
+            <section class="section">
+                <h2 class="section-title">[Section 3 Title]</h2>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>[Column 1]</th>
+                            <th>[Column 2]</th>
+                            <th>[Column 3]</th>
+                            <th>[Column 4]</th>
+                            <th class="text-center">[Column 5]</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>[Row 1 Name]</strong></td>
+                            <td>[Value]</td>
+                            <td>[Value]</td>
+                            <td>[Value]</td>
+                            <td class="text-center"><span class="badge badge-high">[Status]</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>[Row 2 Name]</strong></td>
+                            <td>[Value]</td>
+                            <td>[Value]</td>
+                            <td>[Value]</td>
+                            <td class="text-center"><span class="badge badge-medium">[Status]</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>[Row 3 Name]</strong></td>
+                            <td>[Value]</td>
+                            <td>[Value]</td>
+                            <td>[Value]</td>
+                            <td class="text-center"><span class="badge badge-low">[Status]</span></td>
+                        </tr>
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Section 4: Two-Column Charts -->
+            <section class="section">
+                <h2 class="section-title">[Section 4 Title]</h2>
+
+                <div class="chart-row">
+                    <div class="chart-col">
+                        <div class="chart-container chart-container-half">
+                            <h3 class="chart-title">[Left Chart Title]</h3>
+                            <div class="chart-placeholder">
+                                [Insert chart here]
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-col">
+                        <div class="chart-container chart-container-half">
+                            <h3 class="chart-title">[Right Chart Title]</h3>
+                            <div class="chart-placeholder">
+                                [Insert chart here]
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 5: Feature Comparison -->
+            <section class="section">
+                <h2 class="section-title">[Section 5 Title - Feature Comparison]</h2>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th class="text-center">[Company]</th>
+                            <th class="text-center">[Competitor 1]</th>
+                            <th class="text-center">[Competitor 2]</th>
+                            <th class="text-center">[Competitor 3]</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>[Feature 1]</td>
+                            <td class="text-center feature-yes">Yes</td>
+                            <td class="text-center feature-yes">Yes</td>
+                            <td class="text-center feature-partial">Partial</td>
+                            <td class="text-center feature-no">No</td>
+                        </tr>
+                        <tr>
+                            <td>[Feature 2]</td>
+                            <td class="text-center feature-yes">Yes</td>
+                            <td class="text-center feature-no">No</td>
+                            <td class="text-center feature-yes">Yes</td>
+                            <td class="text-center feature-yes">Yes</td>
+                        </tr>
+                        <!-- Add more features as needed -->
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Section 6: Info Cards -->
+            <section class="section">
+                <h2 class="section-title">[Section 6 Title - Key Insights]</h2>
+
+                <div class="grid-2">
+                    <div class="info-card">
+                        <h4 class="info-card-title">[Insight 1 Title]</h4>
+                        <p>[Insight 1 description with supporting data and source citation (Source, Year)]</p>
+                    </div>
+                    <div class="info-card">
+                        <h4 class="info-card-title">[Insight 2 Title]</h4>
+                        <p>[Insight 2 description with supporting data and source citation (Source, Year)]</p>
+                    </div>
+                    <div class="info-card">
+                        <h4 class="info-card-title">[Insight 3 Title]</h4>
+                        <p>[Insight 3 description with supporting data and source citation (Source, Year)]</p>
+                    </div>
+                    <div class="info-card">
+                        <h4 class="info-card-title">[Insight 4 Title]</h4>
+                        <p>[Insight 4 description with supporting data and source citation (Source, Year)]</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sources Section -->
+            <div class="sources">
+                <p class="sources-title">Sources:</p>
+                <p>[Source 1] (Year); [Source 2] (Year); [Source 3] (Year)</p>
+            </div>
+        </main>
+
+        <!-- ============================================
+             FOOTER SECTION
+             ============================================ -->
+        <footer class="footer">
+            <div class="footer-left">
+                <span><strong>Version:</strong> [1.0]</span>
+                <span><strong>Status:</strong> [Draft/Final/Client-Ready]</span>
+                <span><strong>Classification:</strong> [Confidential/Internal]</span>
+            </div>
+            <div class="footer-right">
+                <p>[Company Name] Competitive Analysis</p>
+                <p>Page 1 of 1</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ============================================
+         OPTIONAL: JavaScript for Interactive Charts
+         ============================================ -->
+    <script>
+        // Placeholder for chart initialization
+        // Use D3.js, Chart.js, or other visualization libraries
+
+        // Example D3.js initialization:
+        // const svg = d3.select('.chart-placeholder')
+        //     .append('svg')
+        //     .attr('width', width)
+        //     .attr('height', height);
+
+        // Example Chart.js initialization:
+        // const ctx = document.getElementById('chartCanvas').getContext('2d');
+        // new Chart(ctx, { type: 'bar', data: {...}, options: {...} });
+    </script>
+</body>
+</html>

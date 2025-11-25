@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategic Recommendations - Maia Learning</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #ffffff;
+            color: #333;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 18px;
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            background: white;
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 13px;
+            vertical-align: top;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        .rec-number {
+            font-weight: 700;
+            font-size: 18px;
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        .priority-critical {
+            background: #ffebee;
+            border-left: 5px solid #e74c3c;
+        }
+
+        .priority-high {
+            background: #fff8e1;
+            border-left: 5px solid #f39c12;
+        }
+
+        .priority-medium {
+            background: #e8f5e9;
+            border-left: 5px solid #27ae60;
+        }
+
+        .priority-ongoing {
+            background: #e3f2fd;
+            border-left: 5px solid #3498db;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-right: 5px;
+        }
+
+        .badge-critical {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .badge-high {
+            background: #f39c12;
+            color: white;
+        }
+
+        .badge-medium {
+            background: #27ae60;
+            color: white;
+        }
+
+        .badge-ongoing {
+            background: #3498db;
+            color: white;
+        }
+
+        .rec-title {
+            font-weight: 600;
+            font-size: 15px;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+
+        .investment {
+            color: #e74c3c;
+            font-weight: 600;
+        }
+
+        .timeline {
+            color: #3498db;
+            font-weight: 600;
+        }
+
+        .roadmap {
+            background: #f8f9fa;
+            padding: 20px;
+            border-left: 5px solid #3498db;
+            margin-top: 20px;
+        }
+
+        .roadmap h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+
+        .quarter {
+            margin-bottom: 15px;
+        }
+
+        .quarter-title {
+            font-weight: 700;
+            color: #3498db;
+            margin-bottom: 5px;
+        }
+
+        .quarter-items {
+            font-size: 13px;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+    <h1>Strategic Recommendations for Maia Learning</h1>
+    <p style="color: #7f8c8d; margin-bottom: 30px;">7 Prioritized Actions for 2026 | Based on Competitive Analysis</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 5%;">#</th>
+                <th style="width: 10%;">Priority</th>
+                <th style="width: 30%;">Recommendation</th>
+                <th style="width: 12%;">Investment</th>
+                <th style="width: 12%;">Timeline</th>
+                <th style="width: 20%;">Addresses</th>
+                <th style="width: 11%;">Expected Outcome</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="priority-critical">
+                <td class="rec-number">1</td>
+                <td><span class="badge badge-critical">🔴 CRITICAL</span></td>
+                <td>
+                    <div class="rec-title">Close AI Gap & Deepen Common App Integration</div>
+                    Develop predictive AI (acceptance chances, college list balancing), conversational AI assistant, essay review. Audit and enhance Common App integration to match SCOIR's NEW 2025-26 depth.
+                </td>
+                <td class="investment">$500K-1M</td>
+                <td class="timeline">Q1-Q2 2026<br>(6 months)</td>
+                <td>SCOIR AI 2.0, SchooLinks Agentic Layer, AI becoming table stakes</td>
+                <td>Match innovation leaders, defend US private school market</td>
+            </tr>
+
+            <tr class="priority-high">
+                <td class="rec-number">2</td>
+                <td><span class="badge badge-high">🟡 HIGH</span></td>
+                <td>
+                    <div class="rec-title">Launch First-Mover Native Mobile App</div>
+                    Build native iOS + Android app (React Native or Flutter). Student-focused features: portfolio, college search, AI assistant, push notifications, offline access.
+                </td>
+                <td class="investment">$300K-500K</td>
+                <td class="timeline">Q3 2026 - Q1 2027<br>(9-12 months)</td>
+                <td>Mobile-first student generation, Gen Z/Gen Alpha expectations</td>
+                <td>12-18 month first-mover advantage, 2-3x engagement increase</td>
+            </tr>
+
+            <tr class="priority-high">
+                <td class="rec-number">3</td>
+                <td><span class="badge badge-high">🟡 HIGH</span></td>
+                <td>
+                    <div class="rec-title">Target Naviance Switchers (US Private Schools)</div>
+                    Develop comparison materials, identify dissatisfied Naviance schools, launch targeted campaign at NAIS conference. Free data migration and dedicated onboarding for switchers.
+                </td>
+                <td class="investment">$200K-400K</td>
+                <td class="timeline">Q1-Q4 2026<br>(ongoing)</td>
+                <td>Naviance poor satisfaction (3.2/5), 300-600 schools/year considering switch</td>
+                <td>Win 20-40 schools in year 1, $50-100K ARR, scale to 50-100/year by 2027</td>
+            </tr>
+
+            <tr class="priority-medium">
+                <td class="rec-number">4</td>
+                <td><span class="badge badge-medium">🟡 MED-HIGH</span></td>
+                <td>
+                    <div class="rec-title">Implement Tiered Pricing Model</div>
+                    Create Basic ($5-6), Plus ($8-9), Premium ($12-15) tiers. Expand addressable market 3-5x while maintaining premium positioning. Feature differentiation ensures value clear at each tier.
+                </td>
+                <td class="investment">$150K-250K</td>
+                <td class="timeline">Q1-Q4 2026<br>(launch Q4)</td>
+                <td>Pricing gap ($10 vs. $3.50-6), losing price-sensitive customers</td>
+                <td>Expand addressable market, compete in value segments, +17-70% revenue</td>
+            </tr>
+
+            <tr class="priority-medium">
+                <td class="rec-number">5</td>
+                <td><span class="badge badge-medium">🟢 MEDIUM</span></td>
+                <td>
+                    <div class="rec-title">Publish Customer Reviews & Testimonials</div>
+                    Survey customers to measure satisfaction (NPS, 1-5 stars). IF ≥4.0/5, solicit public reviews on Capterra, G2, TrustRadius. Feature badges on website and sales materials.
+                </td>
+                <td class="investment">$20K-50K</td>
+                <td class="timeline">Q1-Q4 2026<br>(survey Q1)</td>
+                <td>Satisfaction as differentiator (SCOIR 4.7 winning, Naviance 3.2 losing)</td>
+                <td>VERY HIGH ROI if satisfaction ≥4.0 - visible competitive advantage</td>
+            </tr>
+
+            <tr class="priority-medium">
+                <td class="rec-number">6</td>
+                <td><span class="badge badge-medium">🟢 MEDIUM</span></td>
+                <td>
+                    <div class="rec-title">Develop "International Innovation Leader" Brand</div>
+                    Position as ONLY platform combining global reach (70+ countries) with SCOIR-level AI innovation. Market as "Global SCOIR" - international comprehensive platform with advanced AI.
+                </td>
+                <td class="investment">$100K-200K</td>
+                <td class="timeline">Q3 2026 - 2027<br>(after AI 2.0)</td>
+                <td>White space opportunity - no platform has both international + innovation</td>
+                <td>Defensible market position, $60-84M TAM, 15-25% int'l market share by 2030</td>
+            </tr>
+
+            <tr class="priority-ongoing">
+                <td class="rec-number">7</td>
+                <td><span class="badge badge-ongoing">🔵 ONGOING</span></td>
+                <td>
+                    <div class="rec-title">Maintain Competitive Intelligence & Service Excellence</div>
+                    Quarterly competitive reviews, monitor SCOIR/SchooLinks product updates, track pricing changes, watch M&A activity. Maintain legendary customer service as differentiator.
+                </td>
+                <td class="investment">$50K-100K/yr</td>
+                <td class="timeline">Ongoing<br>(Q1-Q4 2026+)</td>
+                <td>Dynamic competitive landscape, fast-moving innovation, market consolidation</td>
+                <td>Early warning of threats, rapid response capability, sustained satisfaction</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="roadmap">
+        <h3>2026 Implementation Roadmap</h3>
+
+        <div class="quarter">
+            <div class="quarter-title">Q1 2026 (Jan-Mar)</div>
+            <div class="quarter-items">
+                • Start AI development (Rec #1) - Partner selection or in-house build decision<br>
+                • Survey customer satisfaction (Rec #5) - Measure NPS and satisfaction scores<br>
+                • Design tiered pricing (Rec #4) - Feature allocation and pricing research<br>
+                • Identify Naviance switcher targets (Rec #3) - Build prospect list
+            </div>
+        </div>
+
+        <div class="quarter">
+            <div class="quarter-title">Q2 2026 (Apr-Jun)</div>
+            <div class="quarter-items">
+                • Complete AI Gap closure (Rec #1) - Launch Maia AI 2.0 with predictive features<br>
+                • Audit Common App integration (Rec #1) - Close any gaps vs. SCOIR<br>
+                • Build tiered pricing system (Rec #4) - Technical implementation<br>
+                • Launch Naviance campaign at NAIS (Rec #3) - Conference presence
+            </div>
+        </div>
+
+        <div class="quarter">
+            <div class="quarter-title">Q3 2026 (Jul-Sep)</div>
+            <div class="quarter-items">
+                • Start mobile app development (Rec #2) - Native iOS + Android build<br>
+                • Beta test tiered pricing (Rec #4) - 10-20 schools per tier<br>
+                • Solicit customer reviews (Rec #5) - IF satisfaction ≥4.0/5<br>
+                • Develop international branding (Rec #6) - "Global Innovation Leader" messaging
+            </div>
+        </div>
+
+        <div class="quarter">
+            <div class="quarter-title">Q4 2026 (Oct-Dec)</div>
+            <div class="quarter-items">
+                • Continue mobile app development (Rec #2) - Beta testing phase<br>
+                • Full launch tiered pricing (Rec #4) - All markets available<br>
+                • Publicize customer reviews (Rec #5) - Website badges, sales materials<br>
+                • Scale Naviance switcher program (Rec #3) - Target 20-40 schools year 1
+            </div>
+        </div>
+    </div>
+
+    <h2>Investment Summary</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Priority Level</th>
+                <th>Total Investment</th>
+                <th>Expected Return</th>
+                <th>Rationale</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="priority-critical">
+                <td><strong>Critical Priority</strong></td>
+                <td class="investment">$500K-1M</td>
+                <td>Defend US market share, match innovation leaders</td>
+                <td>AI gap is existential threat - must close within 6-12 months</td>
+            </tr>
+            <tr class="priority-high">
+                <td><strong>High Priority</strong></td>
+                <td class="investment">$500K-900K</td>
+                <td>First-mover mobile advantage, +$50-300K ARR from switchers</td>
+                <td>Mobile = 12-18 month window, Naviance switchers = immediate opportunity</td>
+            </tr>
+            <tr class="priority-medium">
+                <td><strong>Medium Priority</strong></td>
+                <td class="investment">$270K-450K</td>
+                <td>+17-70% revenue (tiered pricing), visible satisfaction advantage</td>
+                <td>Expands addressable market, differentiates from poor-satisfaction competitors</td>
+            </tr>
+            <tr>
+                <td><strong>TOTAL 2026</strong></td>
+                <td class="investment" style="font-size: 16px;">$1.27M-2.35M</td>
+                <td>Category leadership, defensible moat, revenue growth</td>
+                <td>Strategic investments to defend position and capture opportunities</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

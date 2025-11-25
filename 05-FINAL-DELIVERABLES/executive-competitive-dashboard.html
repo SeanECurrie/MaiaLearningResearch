@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maia Learning - Executive Competitive Dashboard</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0 60px;
+            background: linear-gradient(135deg, #1e3a8a 0%, #7c3aed 100%);
+            border-radius: 16px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            color: #e0e7ff;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: #1e293b;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid #334155;
+        }
+
+        .card-full {
+            grid-column: 1 / -1;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #f1f5f9;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-title::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            border-radius: 2px;
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .metric {
+            background: #0f172a;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #334155;
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #60a5fa;
+            margin-bottom: 5px;
+        }
+
+        .metric-label {
+            font-size: 0.875rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .threat-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .threat-high {
+            background: rgba(239, 68, 68, 0.2);
+            color: #fca5a5;
+            border: 1px solid #ef4444;
+        }
+
+        .threat-medium-high {
+            background: rgba(251, 146, 60, 0.2);
+            color: #fdba74;
+            border: 1px solid #fb923c;
+        }
+
+        .threat-medium {
+            background: rgba(250, 204, 21, 0.2);
+            color: #fde047;
+            border: 1px solid #facc15;
+        }
+
+        .legend {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.875rem;
+            color: #cbd5e1;
+        }
+
+        .legend-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+        }
+
+        .action-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .action-item {
+            background: #0f172a;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 12px;
+            border-left: 4px solid #3b82f6;
+            transition: all 0.2s;
+        }
+
+        .action-item:hover {
+            transform: translateX(5px);
+            border-left-color: #8b5cf6;
+        }
+
+        .action-priority {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .priority-critical {
+            color: #fca5a5;
+        }
+
+        .priority-high {
+            color: #fdba74;
+        }
+
+        .action-text {
+            color: #e2e8f0;
+            font-size: 1rem;
+        }
+
+        svg {
+            overflow: visible;
+        }
+
+        .axis text {
+            fill: #94a3b8;
+            font-size: 11px;
+        }
+
+        .axis line,
+        .axis path {
+            stroke: #334155;
+        }
+
+        .grid line {
+            stroke: #1e293b;
+            stroke-dasharray: 2,2;
+        }
+
+        .tooltip {
+            position: absolute;
+            padding: 12px 16px;
+            background: rgba(15, 23, 42, 0.95);
+            color: #e2e8f0;
+            border-radius: 8px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s;
+            font-size: 0.875rem;
+            line-height: 1.5;
+            z-index: 1000;
+            border: 1px solid #334155;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .tooltip strong {
+            color: #60a5fa;
+            display: block;
+            margin-bottom: 6px;
+            font-size: 0.95rem;
+        }
+
+        .gap-box {
+            background: rgba(239, 68, 68, 0.1);
+            border: 2px solid #ef4444;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .advantage-box {
+            background: rgba(34, 197, 94, 0.1);
+            border: 2px solid #22c55e;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .gap-title,
+        .advantage-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .gap-title {
+            color: #fca5a5;
+        }
+
+        .advantage-title {
+            color: #86efac;
+        }
+
+        .gap-text,
+        .advantage-text {
+            font-size: 0.875rem;
+            color: #cbd5e1;
+        }
+
+        @media (max-width: 1200px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .radar-legend {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .competitor-legend {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: #0f172a;
+            border-radius: 8px;
+            border: 1px solid #334155;
+        }
+
+        .legend-line {
+            width: 30px;
+            height: 3px;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Maia Learning Competitive Intelligence Dashboard</h1>
+            <div class="subtitle">Strategic Analysis: Top 4 Competitors | November 2025</div>
+        </header>
+
+        <div class="dashboard-grid">
+            <!-- Market Position Card -->
+            <div class="card">
+                <div class="card-title">Market Position Overview</div>
+                <div class="metric-grid">
+                    <div class="metric">
+                        <div class="metric-value">5-8%</div>
+                        <div class="metric-label">Market Share</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">$10</div>
+                        <div class="metric-label">Price/Student</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">70+</div>
+                        <div class="metric-label">Countries</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">2.5M+</div>
+                        <div class="metric-label">Students</div>
+                    </div>
+                </div>
+                <svg id="market-chart" width="100%" height="300"></svg>
+            </div>
+
+            <!-- Threat Assessment Card -->
+            <div class="card">
+                <div class="card-title">Competitive Threat Assessment</div>
+                <svg id="threat-chart" width="100%" height="400"></svg>
+            </div>
+
+            <!-- Strategic Radar Card -->
+            <div class="card card-full">
+                <div class="card-title">Competitive Positioning: Key Strategic Dimensions</div>
+                <svg id="radar-chart" width="100%" height="600"></svg>
+                <div class="radar-legend" id="radar-legend"></div>
+            </div>
+
+            <!-- Critical Gaps Card -->
+            <div class="card">
+                <div class="card-title">Critical Gaps to Address</div>
+                <div class="gap-box">
+                    <div class="gap-title">🔴 Pricing Competitiveness</div>
+                    <div class="gap-text">$10/student vs. $3.60-6 competitors (2-3x premium)</div>
+                </div>
+                <div class="gap-box">
+                    <div class="gap-title">🔴 AI Predictive Analytics</div>
+                    <div class="gap-text">SCOIR has AI 2.0, SchooLinks has Agentic Layer</div>
+                </div>
+                <div class="gap-box">
+                    <div class="gap-title">🔴 Common App Integration</div>
+                    <div class="gap-text">SCOIR's 2025-26 integration syncs lists, eliminates duplicate recs</div>
+                </div>
+                <div class="gap-box">
+                    <div class="gap-title">🟡 Career Exploration Depth</div>
+                    <div class="gap-text">Xello owns career-first positioning (28 years, 14x engagement)</div>
+                </div>
+                <div class="gap-box">
+                    <div class="gap-title">🟡 State Compliance</div>
+                    <div class="gap-text">SchooLinks dominates TX CCMR, automated compliance</div>
+                </div>
+            </div>
+
+            <!-- Unique Advantages Card -->
+            <div class="card">
+                <div class="card-title">Maia's Unique Advantages</div>
+                <div class="advantage-box">
+                    <div class="advantage-title">⭐ International Dominance</div>
+                    <div class="advantage-text">70+ countries vs. competitors' US-only or limited reach</div>
+                </div>
+                <div class="advantage-box">
+                    <div class="advantage-title">⭐ Deep Localization</div>
+                    <div class="advantage-text">12+ languages with cultural adaptation (not just AI translation)</div>
+                </div>
+                <div class="advantage-box">
+                    <div class="advantage-title">⭐ AI Letter Writing</div>
+                    <div class="advantage-text">Unique feature - no competitor offers this</div>
+                </div>
+                <div class="advantage-box">
+                    <div class="advantage-title">⭐ Customer Service Excellence</div>
+                    <div class="advantage-text">Legendary support vs. Naviance's poor reputation (3.2/5)</div>
+                </div>
+                <div class="advantage-box">
+                    <div class="advantage-title">⭐ Counselor-Centric Design</div>
+                    <div class="advantage-text">Built by counselors for counselors</div>
+                </div>
+            </div>
+
+            <!-- Priority Actions Card -->
+            <div class="card card-full">
+                <div class="card-title">Strategic Priority Actions (Q1-Q2 2026)</div>
+                <ul class="action-list">
+                    <li class="action-item">
+                        <div class="action-priority priority-critical">🔴 Critical Priority 1</div>
+                        <div class="action-text">Develop predictive AI capabilities - Match SCOIR's acceptance chance prediction and SchooLinks' Agentic Layer</div>
+                    </li>
+                    <li class="action-item">
+                        <div class="action-priority priority-critical">🔴 Critical Priority 2</div>
+                        <div class="action-text">Deepen Common App integration - Audit current integration, implement list syncing and duplicate rec elimination</div>
+                    </li>
+                    <li class="action-item">
+                        <div class="action-priority priority-critical">🔴 Critical Priority 3</div>
+                        <div class="action-text">Justify pricing premium OR develop tiered model - Create clear value proposition for international/comprehensive features</div>
+                    </li>
+                    <li class="action-item">
+                        <div class="action-priority priority-high">🟡 High Priority 4</div>
+                        <div class="action-text">Enhance career exploration - Improve career profiles, assessments, and WBL integration to compete with Xello</div>
+                    </li>
+                    <li class="action-item">
+                        <div class="action-priority priority-high">🟡 High Priority 5</div>
+                        <div class="action-text">Double down on international markets - Defend safe zone, expand in regions where competitors are weak</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="tooltip" id="tooltip"></div>
+
+    <script>
+        // Strategic data
+        const competitors = [
+            { name: "Maia", price: 10, marketShare: 6.5, threat: "N/A", color: "#3b82f6" },
+            { name: "Naviance", price: 10, marketShare: 40, threat: "MEDIUM", color: "#facc15" },
+            { name: "SCOIR", price: 5.4, marketShare: 12, threat: "HIGH", color: "#ef4444" },
+            { name: "SchooLinks", price: 4.5, marketShare: 5, threat: "MEDIUM-HIGH", color: "#fb923c" },
+            { name: "Xello", price: 3.6, marketShare: 17, threat: "MEDIUM-HIGH", color: "#fb923c" }
+        ];
+
+        // Radar chart data - strategic dimensions (0-10 scale)
+        const radarData = {
+            Maia: [
+                { axis: "International Reach", value: 10 },
+                { axis: "AI & Innovation", value: 6 },
+                { axis: "Pricing", value: 3 },
+                { axis: "Career Features", value: 5 },
+                { axis: "State Compliance", value: 4 },
+                { axis: "Customer Service", value: 9 },
+                { axis: "Localization", value: 10 },
+                { axis: "K-12 Coverage", value: 6 }
+            ],
+            Naviance: [
+                { axis: "International Reach", value: 3 },
+                { axis: "AI & Innovation", value: 4 },
+                { axis: "Pricing", value: 3 },
+                { axis: "Career Features", value: 6 },
+                { axis: "State Compliance", value: 5 },
+                { axis: "Customer Service", value: 3 },
+                { axis: "Localization", value: 2 },
+                { axis: "K-12 Coverage", value: 5 }
+            ],
+            SCOIR: [
+                { axis: "International Reach", value: 3 },
+                { axis: "AI & Innovation", value: 10 },
+                { axis: "Pricing", value: 7 },
+                { axis: "Career Features", value: 6 },
+                { axis: "State Compliance", value: 4 },
+                { axis: "Customer Service", value: 7 },
+                { axis: "Localization", value: 2 },
+                { axis: "K-12 Coverage", value: 4 }
+            ],
+            SchooLinks: [
+                { axis: "International Reach", value: 1 },
+                { axis: "AI & Innovation", value: 8 },
+                { axis: "Pricing", value: 9 },
+                { axis: "Career Features", value: 7 },
+                { axis: "State Compliance", value: 10 },
+                { axis: "Customer Service", value: 6 },
+                { axis: "Localization", value: 1 },
+                { axis: "K-12 Coverage", value: 9 }
+            ],
+            Xello: [
+                { axis: "International Reach", value: 4 },
+                { axis: "AI & Innovation", value: 2 },
+                { axis: "Pricing", value: 9 },
+                { axis: "Career Features", value: 10 },
+                { axis: "State Compliance", value: 5 },
+                { axis: "Customer Service", value: 7 },
+                { axis: "Localization", value: 5 },
+                { axis: "K-12 Coverage", value: 10 }
+            ]
+        };
+
+        const platformColors = {
+            Maia: "#3b82f6",
+            Naviance: "#94a3b8",
+            SCOIR: "#ef4444",
+            SchooLinks: "#fb923c",
+            Xello: "#a855f7"
+        };
+
+        // Draw Market Position Chart (Price vs Market Share)
+        function drawMarketChart() {
+            const svg = d3.select("#market-chart");
+            const container = svg.node().parentElement;
+            const width = container.clientWidth;
+            const height = 300;
+            const margin = { top: 20, right: 20, bottom: 50, left: 60 };
+
+            svg.attr("width", width).attr("height", height);
+            svg.selectAll("*").remove();
+
+            const g = svg.append("g")
+                .attr("transform", `translate(${margin.left},${margin.top})`);
+
+            const innerWidth = width - margin.left - margin.right;
+            const innerHeight = height - margin.top - margin.bottom;
+
+            const xScale = d3.scaleLinear()
+                .domain([0, 45])
+                .range([0, innerWidth]);
+
+            const yScale = d3.scaleLinear()
+                .domain([0, 12])
+                .range([innerHeight, 0]);
+
+            const sizeScale = d3.scaleLinear()
+                .domain([0, 45])
+                .range([300, 1500]);
+
+            // Add grid
+            g.append("g")
+                .attr("class", "grid")
+                .call(d3.axisLeft(yScale)
+                    .tickSize(-innerWidth)
+                    .tickFormat(""));
+
+            // Axes
+            g.append("g")
+                .attr("class", "axis")
+                .attr("transform", `translate(0,${innerHeight})`)
+                .call(d3.axisBottom(xScale).ticks(5).tickFormat(d => d + "%"));
+
+            g.append("g")
+                .attr("class", "axis")
+                .call(d3.axisLeft(yScale).ticks(5).tickFormat(d => "$" + d));
+
+            // Axis labels
+            g.append("text")
+                .attr("x", innerWidth / 2)
+                .attr("y", innerHeight + 40)
+                .attr("text-anchor", "middle")
+                .attr("fill", "#94a3b8")
+                .style("font-size", "12px")
+                .text("Market Share");
+
+            g.append("text")
+                .attr("transform", "rotate(-90)")
+                .attr("x", -innerHeight / 2)
+                .attr("y", -45)
+                .attr("text-anchor", "middle")
+                .attr("fill", "#94a3b8")
+                .style("font-size", "12px")
+                .text("Price per Student ($)");
+
+            // Draw bubbles
+            const tooltip = d3.select("#tooltip");
+
+            g.selectAll("circle")
+                .data(competitors)
+                .join("circle")
+                .attr("cx", d => xScale(d.marketShare))
+                .attr("cy", d => yScale(d.price))
+                .attr("r", d => Math.sqrt(sizeScale(d.marketShare)) / Math.PI)
+                .attr("fill", d => d.color)
+                .attr("opacity", 0.7)
+                .attr("stroke", "#e2e8f0")
+                .attr("stroke-width", 2)
+                .style("cursor", "pointer")
+                .on("mouseover", function(event, d) {
+                    d3.select(this).attr("opacity", 1);
+                    tooltip.style("opacity", 1)
+                        .html(`<strong>${d.name}</strong>Market Share: ${d.marketShare}%<br/>Price: $${d.price}/student<br/>Threat: ${d.threat}`);
+                })
+                .on("mousemove", function(event) {
+                    tooltip
+                        .style("left", (event.pageX + 15) + "px")
+                        .style("top", (event.pageY - 28) + "px");
+                })
+                .on("mouseout", function() {
+                    d3.select(this).attr("opacity", 0.7);
+                    tooltip.style("opacity", 0);
+                });
+
+            // Labels
+            g.selectAll("text.label")
+                .data(competitors)
+                .join("text")
+                .attr("class", "label")
+                .attr("x", d => xScale(d.marketShare))
+                .attr("y", d => yScale(d.price) + 5)
+                .attr("text-anchor", "middle")
+                .attr("fill", "#f1f5f9")
+                .style("font-size", "11px")
+                .style("font-weight", "600")
+                .style("pointer-events", "none")
+                .text(d => d.name);
+        }
+
+        // Draw Threat Assessment Chart
+        function drawThreatChart() {
+            const svg = d3.select("#threat-chart");
+            const container = svg.node().parentElement;
+            const width = container.clientWidth;
+            const height = 400;
+            const margin = { top: 20, right: 20, bottom: 50, left: 120 };
+
+            svg.attr("width", width).attr("height", height);
+            svg.selectAll("*").remove();
+
+            const g = svg.append("g")
+                .attr("transform", `translate(${margin.left},${margin.top})`);
+
+            const innerWidth = width - margin.left - margin.right;
+            const innerHeight = height - margin.top - margin.bottom;
+
+            const threatData = competitors.filter(d => d.name !== "Maia");
+
+            const yScale = d3.scaleBand()
+                .domain(threatData.map(d => d.name))
+                .range([0, innerHeight])
+                .padding(0.3);
+
+            const xScale = d3.scaleLinear()
+                .domain([0, 100])
+                .range([0, innerWidth]);
+
+            const threatValues = {
+                "HIGH": 85,
+                "MEDIUM-HIGH": 70,
+                "MEDIUM": 50
+            };
+
+            // Bars
+            g.selectAll("rect")
+                .data(threatData)
+                .join("rect")
+                .attr("x", 0)
+                .attr("y", d => yScale(d.name))
+                .attr("width", d => xScale(threatValues[d.threat]))
+                .attr("height", yScale.bandwidth())
+                .attr("fill", d => d.color)
+                .attr("rx", 6);
+
+            // Labels
+            g.selectAll("text.competitor")
+                .data(threatData)
+                .join("text")
+                .attr("class", "competitor")
+                .attr("x", -10)
+                .attr("y", d => yScale(d.name) + yScale.bandwidth() / 2)
+                .attr("dy", "0.35em")
+                .attr("text-anchor", "end")
+                .attr("fill", "#f1f5f9")
+                .style("font-size", "13px")
+                .style("font-weight", "600")
+                .text(d => d.name);
+
+            // Threat level labels
+            g.selectAll("text.threat")
+                .data(threatData)
+                .join("text")
+                .attr("class", "threat")
+                .attr("x", d => xScale(threatValues[d.threat]) + 10)
+                .attr("y", d => yScale(d.name) + yScale.bandwidth() / 2)
+                .attr("dy", "0.35em")
+                .attr("fill", "#f1f5f9")
+                .style("font-size", "12px")
+                .style("font-weight", "600")
+                .text(d => d.threat + " THREAT");
+        }
+
+        // Draw Radar Chart
+        function drawRadarChart() {
+            const svg = d3.select("#radar-chart");
+            const container = svg.node().parentElement;
+            const width = container.clientWidth;
+            const height = 600;
+
+            svg.attr("width", width).attr("height", height);
+            svg.selectAll("*").remove();
+
+            const radius = Math.min(width, height) / 2 - 120;
+            const centerX = width / 2;
+            const centerY = height / 2;
+
+            const g = svg.append("g")
+                .attr("transform", `translate(${centerX},${centerY})`);
+
+            const axes = radarData.Maia.map(d => d.axis);
+            const levels = 5;
+
+            const angleSlice = (Math.PI * 2) / axes.length;
+
+            // Draw circular grid
+            for (let i = 1; i <= levels; i++) {
+                const levelRadius = (radius / levels) * i;
+
+                g.append("circle")
+                    .attr("r", levelRadius)
+                    .attr("fill", "none")
+                    .attr("stroke", "#334155")
+                    .attr("stroke-width", 1);
+
+                g.append("text")
+                    .attr("x", 5)
+                    .attr("y", -levelRadius + 5)
+                    .attr("fill", "#64748b")
+                    .style("font-size", "10px")
+                    .text((i * 2).toString());
+            }
+
+            // Draw axes
+            axes.forEach((axis, i) => {
+                const angle = angleSlice * i - Math.PI / 2;
+                const lineEnd = {
+                    x: Math.cos(angle) * radius,
+                    y: Math.sin(angle) * radius
+                };
+
+                g.append("line")
+                    .attr("x1", 0)
+                    .attr("y1", 0)
+                    .attr("x2", lineEnd.x)
+                    .attr("y2", lineEnd.y)
+                    .attr("stroke", "#334155")
+                    .attr("stroke-width", 1);
+
+                const labelDistance = radius + 40;
+                const labelPos = {
+                    x: Math.cos(angle) * labelDistance,
+                    y: Math.sin(angle) * labelDistance
+                };
+
+                g.append("text")
+                    .attr("x", labelPos.x)
+                    .attr("y", labelPos.y)
+                    .attr("dy", "0.35em")
+                    .attr("text-anchor", "middle")
+                    .attr("fill", "#cbd5e1")
+                    .style("font-size", "12px")
+                    .style("font-weight", "500")
+                    .text(axis);
+            });
+
+            // Draw platform data
+            const radarLine = d3.lineRadial()
+                .radius(d => (d.value / 10) * radius)
+                .angle((d, i) => i * angleSlice)
+                .curve(d3.curveLinearClosed);
+
+            Object.entries(radarData).forEach(([platform, values], idx) => {
+                const platformGroup = g.append("g")
+                    .attr("class", `platform-${platform}`);
+
+                // Area
+                platformGroup.append("path")
+                    .datum(values)
+                    .attr("d", radarLine)
+                    .attr("fill", platformColors[platform])
+                    .attr("fill-opacity", platform === "Maia" ? 0.3 : 0.1)
+                    .attr("stroke", platformColors[platform])
+                    .attr("stroke-width", platform === "Maia" ? 3 : 2)
+                    .attr("stroke-opacity", platform === "Maia" ? 1 : 0.6);
+
+                // Points
+                values.forEach((point, i) => {
+                    const angle = angleSlice * i - Math.PI / 2;
+                    const r = (point.value / 10) * radius;
+                    const x = Math.cos(angle) * r;
+                    const y = Math.sin(angle) * r;
+
+                    platformGroup.append("circle")
+                        .attr("cx", x)
+                        .attr("cy", y)
+                        .attr("r", platform === "Maia" ? 5 : 3)
+                        .attr("fill", platformColors[platform])
+                        .attr("stroke", "#1e293b")
+                        .attr("stroke-width", 2)
+                        .style("cursor", "pointer")
+                        .on("mouseover", function(event) {
+                            const tooltip = d3.select("#tooltip");
+                            tooltip.style("opacity", 1)
+                                .html(`<strong>${platform}</strong>${point.axis}: ${point.value}/10`);
+                        })
+                        .on("mousemove", function(event) {
+                            d3.select("#tooltip")
+                                .style("left", (event.pageX + 15) + "px")
+                                .style("top", (event.pageY - 28) + "px");
+                        })
+                        .on("mouseout", function() {
+                            d3.select("#tooltip").style("opacity", 0);
+                        });
+                });
+            });
+
+            // Create legend
+            const legendContainer = d3.select("#radar-legend");
+            legendContainer.selectAll("*").remove();
+
+            Object.entries(platformColors).forEach(([platform, color]) => {
+                const item = legendContainer.append("div")
+                    .attr("class", "competitor-legend");
+
+                item.append("div")
+                    .attr("class", "legend-line")
+                    .style("background", color);
+
+                item.append("span")
+                    .style("color", "#cbd5e1")
+                    .style("font-size", "13px")
+                    .style("font-weight", platform === "Maia" ? "600" : "400")
+                    .text(platform);
+            });
+        }
+
+        // Initialize all charts
+        drawMarketChart();
+        drawThreatChart();
+        drawRadarChart();
+
+        // Responsive resize
+        window.addEventListener("resize", () => {
+            drawMarketChart();
+            drawThreatChart();
+            drawRadarChart();
+        });
+    </script>
+</body>
+</html>

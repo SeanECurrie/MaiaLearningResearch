@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Competitive Positioning - Maia Learning</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #ffffff;
+            color: #333;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 18px;
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            background: white;
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 13px;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        .platform-name {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .maia {
+            background: #e3f2fd;
+        }
+
+        .score {
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .high {
+            color: #27ae60;
+        }
+
+        .medium {
+            color: #f39c12;
+        }
+
+        .low {
+            color: #e74c3c;
+        }
+
+        .note {
+            font-size: 12px;
+            color: #7f8c8d;
+            font-style: italic;
+            margin-top: 5px;
+        }
+
+        .legend {
+            background: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+
+        .legend-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Competitive Positioning Analysis</h1>
+    <p style="color: #7f8c8d; margin-bottom: 30px;">Strategic comparison of Maia Learning vs. Top 4 Competitors | November 2025</p>
+
+    <div class="legend">
+        <div class="legend-title">Scoring Guide</div>
+        <strong>Innovation Leadership:</strong> 10 = Industry leader, 5 = Average, 1 = Lagging<br>
+        <strong>Market Coverage:</strong> 10 = Dominant share, 5 = Moderate presence, 1 = Niche<br>
+        <strong>Geographic Scope:</strong> 10 = Global (70+ countries), 5 = Regional, 1 = Single country<br>
+        <strong>Customer Satisfaction:</strong> Based on public reviews (5-star scale)
+    </div>
+
+    <h2>Map 1: Innovation Leadership vs Market Coverage</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Platform</th>
+                <th>Innovation Score</th>
+                <th>Market Coverage Score</th>
+                <th>Key Strengths</th>
+                <th>Positioning</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="maia">
+                <td class="platform-name">⭐ Maia Learning</td>
+                <td class="score medium">6/10</td>
+                <td class="score medium">5.5/10</td>
+                <td>70+ countries, 12+ languages, AI letter writing, Comprehensive platform</td>
+                <td>International comprehensive</td>
+            </tr>
+            <tr>
+                <td class="platform-name">SCOIR</td>
+                <td class="score high">8.5/10</td>
+                <td class="score medium">3.5/10</td>
+                <td>Scoir AI 2.0, 12% market share, 40-50% growth, Modern UX</td>
+                <td>Innovation leader (US only)</td>
+            </tr>
+            <tr>
+                <td class="platform-name">SchooLinks</td>
+                <td class="score high">9/10</td>
+                <td class="score low">2.5/10</td>
+                <td>Agentic Layer (4 AI agents), $88.3M funding, Texas CCMR leader</td>
+                <td>Innovation + state compliance</td>
+            </tr>
+            <tr>
+                <td class="platform-name">Naviance</td>
+                <td class="score low">3/10</td>
+                <td class="score high">7.5/10</td>
+                <td>40% market share, 15,000+ schools, PowerBuddy AI (catch-up)</td>
+                <td>Legacy market leader</td>
+            </tr>
+            <tr>
+                <td class="platform-name">Xello</td>
+                <td class="score low">2.5/10</td>
+                <td class="score high">7/10</td>
+                <td>28 years, 9M students, Career-first, Statewide FL/NH</td>
+                <td>Career specialist</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="note">⚠️ Key Insight: Maia sits in the middle - innovation gap vs. SCOIR/SchooLinks, but broader international coverage</div>
+
+    <h2>Map 2: Pricing Strategy vs Geographic Scope</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Platform</th>
+                <th>Pricing ($/student)</th>
+                <th>Geographic Reach</th>
+                <th>Countries</th>
+                <th>Pricing Position</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="maia">
+                <td class="platform-name">⭐ Maia Learning</td>
+                <td class="score">$10</td>
+                <td class="score high">10/10</td>
+                <td>70+ countries</td>
+                <td>Premium international</td>
+            </tr>
+            <tr>
+                <td class="platform-name">SCOIR</td>
+                <td class="score">$4.80</td>
+                <td class="score low">2/10</td>
+                <td>US only</td>
+                <td>Innovation premium (US)</td>
+            </tr>
+            <tr>
+                <td class="platform-name">SchooLinks</td>
+                <td class="score high">$3.50-5.51</td>
+                <td class="score low">1.5/10</td>
+                <td>US only</td>
+                <td>Value leader</td>
+            </tr>
+            <tr>
+                <td class="platform-name">Naviance</td>
+                <td class="score">$6-8</td>
+                <td class="score low">2/10</td>
+                <td>US only</td>
+                <td>Legacy premium</td>
+            </tr>
+            <tr>
+                <td class="platform-name">Xello</td>
+                <td class="score high">$3.60</td>
+                <td class="score medium">3.5/10</td>
+                <td>US + Canada</td>
+                <td>Value (statewide contracts)</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="note">⚠️ Key Insight: Maia is ONLY platform with global reach (70+ countries) but priced 2-3x higher than US competitors</div>
+
+    <h2>Map 3: Feature Specialization vs Customer Satisfaction</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Platform</th>
+                <th>Feature Scope</th>
+                <th>Customer Satisfaction</th>
+                <th>Reviews</th>
+                <th>Positioning</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="maia">
+                <td class="platform-name">⭐ Maia Learning</td>
+                <td>Comprehensive</td>
+                <td class="score high">4.0-4.5/5 (inferred)</td>
+                <td>No public reviews</td>
+                <td>Comprehensive + service excellence</td>
+            </tr>
+            <tr>
+                <td class="platform-name">SCOIR</td>
+                <td>Specialist → Comprehensive</td>
+                <td class="score high">4.5-4.7/5</td>
+                <td>Public reviews available</td>
+                <td>Specialist with high satisfaction</td>
+            </tr>
+            <tr>
+                <td class="platform-name">SchooLinks</td>
+                <td>State compliance specialist</td>
+                <td class="score medium">No data</td>
+                <td>Limited reviews</td>
+                <td>Specialist (compliance focus)</td>
+            </tr>
+            <tr>
+                <td class="platform-name">Naviance</td>
+                <td>Comprehensive</td>
+                <td class="score low">3.2/5 (poor)</td>
+                <td>Many negative reviews</td>
+                <td>Comprehensive but declining</td>
+            </tr>
+            <tr>
+                <td class="platform-name">Xello</td>
+                <td>Career specialist</td>
+                <td class="score high">4.4/5</td>
+                <td>Positive career focus</td>
+                <td>Career specialist + high satisfaction</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="note">⚠️ Key Insight: Satisfaction is key differentiator - SCOIR (4.7) and Xello (4.4) winning, Naviance (3.2) losing. Maia has no public reviews.</div>
+
+    <h2>Summary: Competitive Positioning Insights</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Dimension</th>
+                <th>Maia's Position</th>
+                <th>Key Threat</th>
+                <th>Key Opportunity</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Innovation</strong></td>
+                <td>Middle (6/10) - AI gap</td>
+                <td>SCOIR (8.5) & SchooLinks (9) ahead</td>
+                <td>Close AI gap to match leaders</td>
+            </tr>
+            <tr>
+                <td><strong>Market Coverage</strong></td>
+                <td>Moderate (5.5/10)</td>
+                <td>Naviance (7.5) & Xello (7) larger</td>
+                <td>Grow in US private schools</td>
+            </tr>
+            <tr>
+                <td><strong>Geographic Reach</strong></td>
+                <td>Unique (10/10) - 70+ countries</td>
+                <td>SCOIR may expand internationally</td>
+                <td>Defensible international moat</td>
+            </tr>
+            <tr>
+                <td><strong>Pricing</strong></td>
+                <td>Premium ($10) - 2-3x competitors</td>
+                <td>Value competitors ($3.50-6)</td>
+                <td>Tiered pricing or justify premium</td>
+            </tr>
+            <tr>
+                <td><strong>Satisfaction</strong></td>
+                <td>High (inferred 4.0-4.5) but invisible</td>
+                <td>SCOIR's visible 4.7 rating</td>
+                <td>Publish reviews if high</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

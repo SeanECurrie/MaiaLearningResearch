@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Trends Analysis - Maia Learning</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #ffffff;
+            color: #333;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 18px;
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .overview {
+            background: #e3f2fd;
+            padding: 20px;
+            border-left: 5px solid #3498db;
+            margin-bottom: 30px;
+        }
+
+        .overview h3 {
+            margin-top: 0;
+            color: #2c3e50;
+            font-size: 16px;
+        }
+
+        .stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 15px;
+        }
+
+        .stat {
+            flex: 1;
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #3498db;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: #7f8c8d;
+            margin-top: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            background: white;
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 13px;
+            vertical-align: top;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        .trend-number {
+            font-weight: 700;
+            font-size: 16px;
+            color: #2c3e50;
+        }
+
+        .priority-critical {
+            background: #ffebee;
+            border-left: 4px solid #e74c3c;
+        }
+
+        .priority-high {
+            background: #fff8e1;
+            border-left: 4px solid #f39c12;
+        }
+
+        .priority-medium {
+            background: #e8f5e9;
+            border-left: 4px solid #27ae60;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .badge-critical {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .badge-high {
+            background: #f39c12;
+            color: white;
+        }
+
+        .badge-medium {
+            background: #27ae60;
+            color: white;
+        }
+
+        .maia-position {
+            font-weight: 600;
+            color: #3498db;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Market Trends Analysis</h1>
+    <p style="color: #7f8c8d; margin-bottom: 30px;">10 Key Trends Shaping the CCR Platform Industry | November 2025</p>
+
+    <div class="overview">
+        <h3>Market Overview</h3>
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-value">$1.5-2B</div>
+                <div class="stat-label">Market Size</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">8-12%</div>
+                <div class="stat-label">Growth Rate (CAGR)</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">2025-2030</div>
+                <div class="stat-label">Timeline</div>
+            </div>
+        </div>
+    </div>
+
+    <h2>🔴 Tier 1: Transformative Trends (Reshaping Competitive Landscape)</h2>
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 5%;">#</th>
+                <th style="width: 25%;">Trend</th>
+                <th style="width: 10%;">Priority</th>
+                <th style="width: 35%;">Impact on Market</th>
+                <th style="width: 25%;">Maia's Position</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="priority-critical">
+                <td class="trend-number">1</td>
+                <td><strong>AI Revolution (2024-2025)</strong></td>
+                <td><span class="badge badge-critical">🔴 CRITICAL</span></td>
+                <td>Platforms with advanced AI (SCOIR AI 2.0, SchooLinks Agentic Layer) gaining competitive advantage. AI transitioning from "nice-to-have" to table stakes.</td>
+                <td><div class="maia-position">Lagging</div>Has unique AI letter writing feature but missing predictive AI (acceptance chances, college list balancing)</td>
+            </tr>
+            <tr class="priority-high">
+                <td class="trend-number">2</td>
+                <td><strong>Direct Admissions Disruption</strong></td>
+                <td><span class="badge badge-high">🟡 HIGH</span></td>
+                <td>200+ colleges offering admission without application. Shift from "help students apply" → "help students choose wisely"</td>
+                <td><div class="maia-position">Must Adapt</div>Must build features to support Direct Admissions workflows. Program expanding 2025-2026.</td>
+            </tr>
+            <tr class="priority-high">
+                <td class="trend-number">3</td>
+                <td><strong>Pricing Pressure & Transparency</strong></td>
+                <td><span class="badge badge-high">🟡 HIGH</span></td>
+                <td>Value platforms (SchooLinks $3.50-5.51, Xello $3.60) pressuring premium players. Customers demanding transparent pricing.</td>
+                <td><div class="maia-position">Vulnerable</div>$10/student is 2-3x competitors. Must justify premium OR develop tiered pricing model.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>🟡 Tier 2: Strategic Trends (Creating Opportunities/Threats)</h2>
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 5%;">#</th>
+                <th style="width: 25%;">Trend</th>
+                <th style="width: 10%;">Priority</th>
+                <th style="width: 35%;">Impact on Market</th>
+                <th style="width: 25%;">Maia's Position</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="priority-high">
+                <td class="trend-number">4</td>
+                <td><strong>Market Consolidation & M&A</strong></td>
+                <td><span class="badge badge-high">🟡 MED-HIGH</span></td>
+                <td>Larger players acquiring smaller platforms (PowerSchool acquiring Naviance). M&A activity accelerating.</td>
+                <td><div class="maia-position">Monitor</div>Independent 22-year company. Could be acquisition target OR strategic acquirer.</td>
+            </tr>
+            <tr class="priority-high">
+                <td class="trend-number">5</td>
+                <td><strong>State Compliance Mandates</strong></td>
+                <td><span class="badge badge-high">🟡 MED-HIGH</span></td>
+                <td>Texas CCMR, state-specific reporting creating specialization opportunities. SchooLinks dominance in state compliance.</td>
+                <td><div class="maia-position">Limited Impact</div>Limited state compliance features. Not core market unless expanding US public districts.</td>
+            </tr>
+            <tr class="priority-high">
+                <td class="trend-number">6</td>
+                <td><strong>Customer Satisfaction as Differentiator</strong></td>
+                <td><span class="badge badge-high">🟡 MED-HIGH</span></td>
+                <td>Poor satisfaction (Naviance 3.2/5) driving churn. High satisfaction (SCOIR 4.5-4.7/5) driving growth. Reviews becoming buying factor.</td>
+                <td><div class="maia-position">Hidden Strength</div>High inferred satisfaction (no public reviews but long customer relationships). Legendary customer service.</td>
+            </tr>
+            <tr class="priority-medium">
+                <td class="trend-number">7</td>
+                <td><strong>Work-Based Learning (WBL) Expansion</strong></td>
+                <td><span class="badge badge-medium">🟢 MEDIUM</span></td>
+                <td>Growing emphasis on career readiness, internships, industry partnerships. SchooLinks Industry Partner Portal leading innovation.</td>
+                <td><div class="maia-position">Basic Features</div>Basic WBL features but not industry-leading. Important for comprehensive positioning.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>🟢 Tier 3: Emerging Trends (Future Opportunities)</h2>
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 5%;">#</th>
+                <th style="width: 25%;">Trend</th>
+                <th style="width: 10%;">Priority</th>
+                <th style="width: 35%;">Impact on Market</th>
+                <th style="width: 25%;">Maia's Position</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="priority-medium">
+                <td class="trend-number">8</td>
+                <td><strong>Mobile-First Student Generation</strong></td>
+                <td><span class="badge badge-medium">🟢 MEDIUM</span></td>
+                <td>Students expect native mobile apps (like social media). Current responsive web insufficient for Gen Z/Gen Alpha.</td>
+                <td><div class="maia-position">First-Mover Opportunity</div>NO competitor has native mobile app = 12-18 month window to capture advantage.</td>
+            </tr>
+            <tr class="priority-medium">
+                <td class="trend-number">9</td>
+                <td><strong>International School Market Growth</strong></td>
+                <td><span class="badge badge-medium">🟢 MEDIUM</span></td>
+                <td>International schools growing globally (estimated 13,000+, up from 9,000 in 2015). Emerging markets expanding middle class.</td>
+                <td><div class="maia-position">Unique Strength</div>70+ countries presence = UNIQUE defensible moat. Opportunity to double down on international expansion.</td>
+            </tr>
+            <tr class="priority-medium">
+                <td class="trend-number">10</td>
+                <td><strong>Data Interoperability Standards (EdFi)</strong></td>
+                <td><span class="badge badge-medium">🟢 LOW-MED</span></td>
+                <td>Large districts requiring EdFi certification for data integration. Becoming procurement requirement.</td>
+                <td><div class="maia-position">Low Priority</div>EdFi status unclear (likely not certified). Low urgency unless expanding to large US public districts.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Summary: Key Implications for Maia</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Threat Category</th>
+                <th>Specific Trends</th>
+                <th>Action Required</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="priority-critical">
+                <td><strong>Critical Threats</strong></td>
+                <td>AI Revolution, Pricing Pressure</td>
+                <td>Close AI gap within 6-12 months. Develop tiered pricing or justify premium positioning.</td>
+            </tr>
+            <tr class="priority-high">
+                <td><strong>Strategic Opportunities</strong></td>
+                <td>Mobile-First, International Growth, Naviance Dissatisfaction</td>
+                <td>Launch native mobile app (first-mover), expand internationally, target Naviance switchers.</td>
+            </tr>
+            <tr class="priority-medium">
+                <td><strong>Monitoring Required</strong></td>
+                <td>M&A Activity, State Compliance, WBL</td>
+                <td>Watch market consolidation, enhance WBL to credible level, monitor state compliance trends.</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

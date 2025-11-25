@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SWOT Analysis - Top 4 Competitors</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #ffffff;
+            color: #333;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .competitor-section {
+            margin-bottom: 50px;
+            page-break-after: always;
+        }
+
+        .competitor-header {
+            background: #3498db;
+            color: white;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        .competitor-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .competitor-subtitle {
+            font-size: 13px;
+            opacity: 0.9;
+        }
+
+        .threat-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-left: 10px;
+        }
+
+        .threat-very-high {
+            background: #e74c3c;
+        }
+
+        .threat-medium-high {
+            background: #f39c12;
+        }
+
+        .threat-medium {
+            background: #f39c12;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th {
+            background: #34495e;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 14px;
+            width: 50%;
+        }
+
+        th.strengths {
+            background: #27ae60;
+        }
+
+        th.weaknesses {
+            background: #e74c3c;
+        }
+
+        th.opportunities {
+            background: #3498db;
+        }
+
+        th.threats {
+            background: #e67e22;
+        }
+
+        td {
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            vertical-align: top;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            border: 2px solid #34495e;
+        }
+
+        .swot-box {
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .swot-title {
+            font-weight: 700;
+            font-size: 16px;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid;
+        }
+
+        .swot-title.strengths {
+            color: #27ae60;
+            border-bottom-color: #27ae60;
+        }
+
+        .swot-title.weaknesses {
+            color: #e74c3c;
+            border-bottom-color: #e74c3c;
+        }
+
+        .swot-title.opportunities {
+            color: #3498db;
+            border-bottom-color: #3498db;
+        }
+
+        .swot-title.threats {
+            color: #e67e22;
+            border-bottom-color: #e67e22;
+        }
+
+        @media print {
+            .competitor-section {
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>SWOT Analysis - Top 4 Competitors</h1>
+    <p style="color: #7f8c8d; margin-bottom: 40px;">Detailed analysis of competitive strengths, weaknesses, opportunities, and threats | November 2025</p>
+
+    <!-- NAVIANCE -->
+    <div class="competitor-section">
+        <div class="competitor-header">
+            <div class="competitor-title">
+                Naviance (PowerSchool)
+                <span class="threat-badge threat-medium">🟡 MEDIUM THREAT</span>
+            </div>
+            <div class="competitor-subtitle">Founded 2002 | ~40% market share | 15,000+ US schools | $6-8/student</div>
+        </div>
+
+        <div class="swot-grid">
+            <div class="swot-box">
+                <div class="swot-title strengths">Strengths</div>
+                <ul>
+                    <li><strong>Dominant Market Share (40%):</strong> 12,000-16,000 US schools, 5-6M students, largest CCR platform</li>
+                    <li><strong>Brand Recognition:</strong> "Industry standard" for 20+ years, counselors know the platform</li>
+                    <li><strong>PowerSchool Integration:</strong> Part of $3.5B portfolio, SIS integration advantage</li>
+                    <li><strong>Data Network Effects:</strong> Scattergrams from 20+ years = valuable predictive data</li>
+                    <li><strong>Comprehensive Features:</strong> College + career + applications + scholarships depth</li>
+                </ul>
+            </div>
+
+            <div class="swot-box">
+                <div class="swot-title weaknesses">Weaknesses</div>
+                <ul>
+                    <li><strong>Poor Customer Satisfaction (3.2/5):</strong> Consistently negative reviews, driving churn</li>
+                    <li><strong>Legacy Technology:</strong> Outdated UI/UX, slow performance vs. modern alternatives (SCOIR)</li>
+                    <li><strong>Innovation Lag:</strong> PowerBuddy AI playing catch-up to SCOIR AI 2.0, SchooLinks</li>
+                    <li><strong>Vista Equity Cost-Cutting:</strong> PE ownership prioritizes profitability over growth/innovation</li>
+                    <li><strong>Losing to SCOIR:</strong> Customers actively switching to more modern platforms</li>
+                </ul>
+            </div>
+
+            <div class="swot-box">
+                <div class="swot-title opportunities">Opportunities</div>
+                <ul>
+                    <li><strong>Modernization (IF Invested):</strong> PowerBuddy AI could improve IF PowerSchool invests</li>
+                    <li><strong>PowerSchool Cross-Sell:</strong> SIS customer base provides distribution advantage</li>
+                    <li><strong>Market Leader Defense:</strong> 40% share defensible IF satisfaction improves</li>
+                </ul>
+            </div>
+
+            <div class="swot-box">
+                <div class="swot-title threats">Threats</div>
+                <ul>
+                    <li><strong>SCOIR Disruption:</strong> Modern alternative winning Naviance customers (40-50% growth)</li>
+                    <li><strong>Customer Exodus:</strong> Poor satisfaction (3.2/5) = 10-15% annual churn risk</li>
+                    <li><strong>Vista Equity Divestiture:</strong> PE firm may sell/spin off if performance declines</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCOIR -->
+    <div class="competitor-section">
+        <div class="competitor-header">
+            <div class="competitor-title">
+                SCOIR
+                <span class="threat-badge threat-very-high">🔴 VERY HIGH THREAT</span>
+            </div>
+            <div class="competitor-subtitle">Founded 2013 | ~12% market share | 40-50% annual growth | $4.80/student | $28.25M funding</div>
+        </div>
+
+        <div class="swot-grid">
+            <div class="swot-box">
+                <div class="swot-title strengths">Strengths</div>
+                <ul>
+                    <li><strong>AI Leadership (Scoir AI 2.0 Jan 2025):</strong> Most advanced AI in industry - acceptance predictions, college list balancing, essay review</li>
+                    <li><strong>High Customer Satisfaction (4.5-4.7/5):</strong> Best reviews in industry, driving referrals and growth</li>
+                    <li><strong>Modern Technology:</strong> Cloud-native platform, superior UX vs. legacy Naviance</li>
+                    <li><strong>40-50% Annual Growth:</strong> Fastest-growing CCR platform, winning Naviance switchers</li>
+                    <li><strong>Common App Integration (NEW 2025-26):</strong> Deepest Common App integration in market</li>
+                    <li><strong>Well-Funded ($28.25M):</strong> Resources for innovation and geographic expansion</li>
+                </ul>
+            </div>
+
+            <div class="swot-box">
+                <div class="swot-title weaknesses">Weaknesses</div>
+                <ul>
+                    <li><strong>US-Only (Geographic Limitation):</strong> No international presence (vs. Maia 70+ countries)</li>
+                    <li><strong>Smaller Market Share (12%):</strong> Growing fast but still 1/3 of Naviance's 40%</li>
+                    <li><strong>Limited Career Features:</strong> College-first platform, career features less developed than Xello/SchooLinks</li>
+                    <li><strong>Higher Pricing ($4.80):</strong> More expensive than value leaders SchooLinks/Xello but justified by innovation</li>
+                </ul>
+            </div>
+
+            <div class="swot-box">
+                <div class="swot-title opportunities">Opportunities</div>
+                <ul>
+                    <li><strong>Become Comprehensive Platform:</strong> Expanding from specialist → comprehensive (college + career depth)</li>
+                    <li><strong>International Expansion:</strong> Could enter UK, Australia, Asia-Pacific (threat to Maia's moat)</li>
+                    <li><strong>Continued Naviance Capture:</strong> 10-15% of Naviance's 15,000 schools = 1,500-2,250 school TAM</li>
+                    <li><strong>Acquisition Target:</strong> Attractive to Instructure, PowerSchool, Anthology ($100-200M valuation)</li>
+                </ul>
+            </div>
+
+            <div class="swot-box">
+                <div class="swot-title threats">Threats</div>
+                <ul>
+                    <li><strong>Competition from SchooLinks AI:</strong> Agentic Layer (Sept 2025) = sophisticated AI architecture competing with SCOIR</li>
+                    <li><strong>Pricing Pressure:</strong> SchooLinks ($3.50-5.51) undercutting SCOIR's $4.80</li>
+                    <li><strong>US Market Saturation:</strong> Eventually runs out of Naviance switchers, must expand internationally or to new segments</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCHOOLINKS -->
+    <div class="competitor-section">
+        <div class="competitor-header">
+            <div class="competitor-title">
+                SchooLinks
+                <span class="threat-badge threat-medium-high">🟡 MEDIUM-HIGH THREAT</span>
+            </div>
+            <div class="competitor-subtitle">Founded 2017 | Texas CCMR leader | $3.50-5.51/student | $88.3M funding (largest in space)</div>
+        </div>
+
+        <div class="swot-grid">
+            <div class="swot-box">
+                <div class="swot-title strengths">Strengths</div>
+                <ul>
+                    <li><strong>Best-in-Class AI (Agentic Layer Sept 2025):</strong> 4 specialized AI agents, most innovative architecture</li>
+                    <li><strong>Value Pricing Leader ($3.50-5.51):</strong> 50-65% less than Maia, competitive with Xello</li>
+                    <li><strong>State Compliance Specialist:</strong> Texas CCMR dominance (PGP, TEA dashboards), expanding to CA/FL</li>
+                    <li><strong>Largest Funding ($88.3M):</strong> Most capital in CCR space for growth and innovation</li>
+                    <li><strong>Work-Based Learning Excellence:</strong> Industry Partner Portal = best-in-class WBL platform</li>
+                    <li><strong>K-12 Comprehensive:</strong> Elementary (K-5) through high school coverage</li>
+                </ul>
+            </div>
+
+            <div class="swot-box">
+                <div class="swot-title weaknesses">Weaknesses</div>
+                <ul>
+                    <li><strong>US-Only (Geographic Limitation):</strong> No international presence</li>
+                    <li><strong>Limited Brand Recognition:</strong> Newer platform (2017) vs. established players</li>
+                    <li><strong>Public District Focus:</strong> May miss US private school market (different buying dynamics)</li>
+                    <li><strong>Limited Customer Reviews:</strong> Less public satisfaction data than SCOIR/Naviance</li>
+                </ul>
+            </div>
+
+            <div class="swot-box">
+                <div class="swot-title opportunities">Opportunities</div>
+                <ul>
+                    <li><strong>Geographic Expansion (Texas → CA/FL):</strong> Replicate Texas CCMR success in other states</li>
+                    <li><strong>Pivot to US Private Schools:</strong> If public district market saturates, private schools are available</li>
+                    <li><strong>International Expansion (Long-Term):</strong> Could enter international market with $88.3M funding</li>
+                </ul>
+            </div>
+
+            <div class="swot-box">
+                <div class="swot-title threats">Threats</div>
+                <ul>
+                    <li><strong>State Budget Cuts:</strong> Dependent on state-funded CCMR mandates (Texas economic downturn = risk)</li>
+                    <li><strong>SCOIR Competition:</strong> SCOIR winning US private schools that SchooLinks may target</li>
+                    <li><strong>Xello Statewide Contracts:</strong> Xello's FL/NH free contracts block SchooLinks expansion</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- XELLO -->
+    <div class="competitor-section">
+        <div class="competitor-header">
+            <div class="competitor-title">
+                Xello
+                <span class="threat-badge threat-medium-high">🟡 MEDIUM-HIGH THREAT</span>
+            </div>
+            <div class="competitor-subtitle">Founded 1997 (28 years) | 9M students | Career-first specialist | $3.60/student | Statewide FL/NH contracts</div>
+        </div>
+
+        <div class="swot-grid">
+            <div class="swot-box">
+                <div class="swot-title strengths">Strengths</div>
+                <ul>
+                    <li><strong>Career Specialist Dominance:</strong> 28-year focus on career exploration = unmatched expertise</li>
+                    <li><strong>Statewide Free Contracts (FL K-12, NH HS):</strong> Guaranteed market access via state funding</li>
+                    <li><strong>High Engagement (14x Competitors):</strong> 20% outside-school usage (students use at home)</li>
+                    <li><strong>High Satisfaction (4.4/5):</strong> Strong reviews, especially for career focus</li>
+                    <li><strong>Value Pricing ($3.60):</strong> Second-lowest in market after SchooLinks</li>
+                    <li><strong>Awards Recognition:</strong> TIME's 2025 Top EdTech, Tech & Learning 2024, CODiE 2024</li>
+                    <li><strong>K-12 Comprehensive:</strong> Kindergarten through grade 12 coverage</li>
+                </ul>
+            </div>
+
+            <div class="swot-box">
+                <div class="swot-title weaknesses">Weaknesses</div>
+                <ul>
+                    <li><strong>Limited College Features:</strong> Career-first = college counseling features less developed than comprehensive platforms</li>
+                    <li><strong>NO AI (Technology Gap):</strong> Only major platform without AI features = lagging innovation</li>
+                    <li><strong>North America Only (US + Canada):</strong> Limited international presence vs. Maia's 70+ countries</li>
+                    <li><strong>College-Prep Schools Miss:</strong> US private college-prep schools prefer comprehensive platforms (Maia, Naviance, SCOIR)</li>
+                </ul>
+            </div>
+
+            <div class="swot-box">
+                <div class="swot-title opportunities">Opportunities</div>
+                <ul>
+                    <li><strong>Win Additional Statewide Contracts:</strong> Target Texas, California, other states for FL/NH model replication</li>
+                    <li><strong>Develop AI Career Features:</strong> AI career coach would differentiate vs. SCOIR/SchooLinks college AI</li>
+                    <li><strong>Expand College Features:</strong> Enhance college counseling to compete as comprehensive platform</li>
+                </ul>
+            </div>
+
+            <div class="swot-box">
+                <div class="swot-title threats">Threats</div>
+                <ul>
+                    <li><strong>AI Gap Widening:</strong> Competitors (SCOIR, SchooLinks) innovating with AI while Xello has none</li>
+                    <li><strong>Comprehensive Platforms:</strong> Schools choosing SCOIR/Maia for college+career depth vs. Xello's career-only</li>
+                    <li><strong>State Contract Expiration:</strong> If FL/NH don't renew, lose guaranteed market access</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

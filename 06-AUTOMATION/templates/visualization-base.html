@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[VISUALIZATION_TITLE] - Competitive Analysis</title>
+    <style>
+        /* Enterprise Visualization Base Styles */
+
+        /* Page Setup for PDF Export */
+        @page {
+            size: letter landscape;
+            margin: 0.5in;
+        }
+
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        /* Reset and Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 30px 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.2em;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .header .subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        /* Main Content Area */
+        .content {
+            padding: 40px;
+        }
+
+        /* Section Styling */
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #1a1a2e;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+        }
+
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        /* Cards */
+        .card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            border: 1px solid #e9ecef;
+        }
+
+        .card-title {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #1a1a2e;
+            margin-bottom: 15px;
+        }
+
+        .card-content {
+            font-size: 0.95em;
+            line-height: 1.6;
+            color: #495057;
+        }
+
+        /* Lists */
+        .item-list {
+            list-style: none;
+        }
+
+        .item-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #e9ecef;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .item-list li:last-child {
+            border-bottom: none;
+        }
+
+        .item-list li::before {
+            content: "•";
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+
+        /* Tags/Badges */
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .badge-success {
+            background: #28a745;
+            color: white;
+        }
+
+        .badge-warning {
+            background: #ffc107;
+            color: #333;
+        }
+
+        .badge-danger {
+            background: #dc3545;
+            color: white;
+        }
+
+        .badge-info {
+            background: #17a2b8;
+            color: white;
+        }
+
+        /* Tables */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .data-table th {
+            background: #1a1a2e;
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .data-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .data-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .data-table tr:hover {
+            background: #e9ecef;
+        }
+
+        /* Metrics/Stats */
+        .metric-box {
+            text-align: center;
+            padding: 25px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px;
+        }
+
+        .metric-value {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .metric-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Footer */
+        .footer {
+            background: #f8f9fa;
+            padding: 20px 40px;
+            text-align: center;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .footer-text {
+            font-size: 0.85em;
+            color: #6c757d;
+        }
+
+        .source-citation {
+            font-size: 0.8em;
+            color: #6c757d;
+            font-style: italic;
+        }
+
+        /* Utility Classes */
+        .text-center { text-align: center; }
+        .text-right { text-align: right; }
+        .text-muted { color: #6c757d; }
+        .font-bold { font-weight: 700; }
+        .mt-20 { margin-top: 20px; }
+        .mb-20 { margin-bottom: 20px; }
+
+        /* Color Classes for Competitor Coding */
+        .color-primary { color: #667eea; }
+        .color-secondary { color: #764ba2; }
+        .color-competitor-1 { color: #28a745; }
+        .color-competitor-2 { color: #ffc107; }
+        .color-competitor-3 { color: #dc3545; }
+        .color-competitor-4 { color: #17a2b8; }
+
+        .bg-primary { background-color: #667eea; }
+        .bg-secondary { background-color: #764ba2; }
+        .bg-competitor-1 { background-color: #28a745; }
+        .bg-competitor-2 { background-color: #ffc107; }
+        .bg-competitor-3 { background-color: #dc3545; }
+        .bg-competitor-4 { background-color: #17a2b8; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>[VISUALIZATION_TITLE]</h1>
+            <div class="subtitle">[COMPANY_NAME] - Competitive Analysis</div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+
+            <!-- Example Section: Metrics Row -->
+            <div class="section">
+                <div class="grid-4">
+                    <div class="metric-box">
+                        <div class="metric-value">[METRIC_1]</div>
+                        <div class="metric-label">[LABEL_1]</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="metric-value">[METRIC_2]</div>
+                        <div class="metric-label">[LABEL_2]</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="metric-value">[METRIC_3]</div>
+                        <div class="metric-label">[LABEL_3]</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="metric-value">[METRIC_4]</div>
+                        <div class="metric-label">[LABEL_4]</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Example Section: Two-Column Layout -->
+            <div class="section">
+                <h2 class="section-title">[SECTION_TITLE]</h2>
+                <div class="grid-2">
+                    <div class="card">
+                        <h3 class="card-title">[CARD_TITLE_1]</h3>
+                        <div class="card-content">
+                            <ul class="item-list">
+                                <li>[ITEM_1]</li>
+                                <li>[ITEM_2]</li>
+                                <li>[ITEM_3]</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3 class="card-title">[CARD_TITLE_2]</h3>
+                        <div class="card-content">
+                            <ul class="item-list">
+                                <li>[ITEM_4]</li>
+                                <li>[ITEM_5]</li>
+                                <li>[ITEM_6]</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Example Section: Data Table -->
+            <div class="section">
+                <h2 class="section-title">[TABLE_TITLE]</h2>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Competitor</th>
+                            <th>Feature 1</th>
+                            <th>Feature 2</th>
+                            <th>Feature 3</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>[COMPETITOR_1]</strong></td>
+                            <td><span class="badge badge-success">Yes</span></td>
+                            <td><span class="badge badge-warning">Partial</span></td>
+                            <td><span class="badge badge-danger">No</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>[COMPETITOR_2]</strong></td>
+                            <td><span class="badge badge-success">Yes</span></td>
+                            <td><span class="badge badge-success">Yes</span></td>
+                            <td><span class="badge badge-warning">Partial</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p class="footer-text">
+                [COMPANY_NAME] Competitive Analysis | Confidential | [DATE]
+            </p>
+            <p class="source-citation">
+                Sources: [SOURCE_LIST]
+            </p>
+        </div>
+    </div>
+</body>
+</html>

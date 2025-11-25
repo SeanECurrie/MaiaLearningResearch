@@ -1,0 +1,68 @@
+THREATS & OPPORTUNITIES FILTERING SUMMARY
+==========================================
+
+Source File: 04-STRATEGIC-INSIGHTS/threats-opportunities.md
+Output File: 05-FINAL-DELIVERABLES/threats-opportunities-top4.md
+
+SCOPE:
+- Focus: Maia Learning and Top 4 Competitors (Naviance, SCOIR, SchooLinks, Xello)
+- Removed: All sections about Cialfo, MajorClarity, and Common App as main topics
+
+SECTIONS REMOVED:
+1. Threat 6: Direct Admissions Transformation (Common App specific)
+2. Threat 10: Cialfo Improving (Manifest Integration)
+3. Opportunity 1: Attack Cialfo's Asia-Pacific Base
+4. Opportunity 6: Deepen Common App & Direct Admissions Integration
+
+DOCUMENT CHANGES:
+- Original: 1,816 lines → Filtered: 1,580 lines (236 lines removed)
+- Threats: 10 → 8 total
+  - VERY HIGH: 3 (unchanged)
+  - MEDIUM-HIGH: 4 → 3
+  - LOW-MEDIUM: 3 → 2
+- Opportunities: 12 → 10 total
+  - VERY HIGH: 4 → 3
+  - MEDIUM-HIGH: 5 → 4
+  - MEDIUM: 3 (unchanged)
+
+RENUMBERING:
+Threats:
+- T7 → T6 (SCOIR International Expansion)
+- T8 → T7 (Market Consolidation)
+- T9 → T8 (Naviance Improving)
+
+Opportunities:
+- Opp 2 → Opp 1 (International Innovation Leader)
+- Opp 3 → Opp 2 (Native Mobile App)
+- Opp 4 → Opp 3 (Target Naviance Switchers)
+- Opp 5 → Opp 4 (Tiered Pricing)
+- Opp 7 → Opp 5 (White Space)
+- Opp 8 → Opp 6 (AI Career Exploration)
+- Opp 9 → Opp 7 (Publish Reviews)
+- Opp 10 → Opp 8 (Statewide Partnerships)
+- Opp 11 → Opp 9 (Strategic Acquisitions)
+- Opp 12 → Opp 10 (Enhanced WBL)
+
+CONTEXTUAL MENTIONS RETAINED:
+- Cialfo pricing comparisons (e.g., "Maia $10 vs. Cialfo $30")
+- Common App integration references in SCOIR threat
+- MajorClarity removed from competitor lists
+- Market consolidation context (Manifest + Cialfo merger)
+
+DOCUMENT STRUCTURE MAINTAINED:
+✓ Executive Summary updated
+✓ Table of Contents unchanged
+✓ Threat-Opportunity Matrix updated
+✓ Timeline & Urgency section updated
+✓ Resource Allocation section updated
+✓ Strategic Action Plan updated
+✓ Metadata section updated
+
+QUALITY CHECKS:
+✓ All section headers properly formatted
+✓ All numbering sequential and consistent
+✓ All cross-references updated
+✓ Document formatting and structure preserved
+✓ No orphaned references to removed sections
+
+Date: November 18, 2025

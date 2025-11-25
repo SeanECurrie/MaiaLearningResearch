@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feature Comparison Heatmap - College & Career Readiness Platforms</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 30px 40px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+
+        .date {
+            font-size: 0.875rem;
+            opacity: 0.7;
+        }
+
+        .controls {
+            padding: 25px 40px;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .filter-label {
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #495057;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border: 2px solid #dee2e6;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            color: #495057;
+        }
+
+        .filter-btn:hover {
+            border-color: #667eea;
+            background: #f0f3ff;
+            transform: translateY(-1px);
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: #667eea;
+        }
+
+        .legend-container {
+            padding: 20px 40px;
+            background: #f8f9fa;
+            border-top: 2px solid #e9ecef;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.875rem;
+        }
+
+        .legend-color {
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .chart-container {
+            padding: 30px 40px;
+            overflow-x: auto;
+        }
+
+        .tooltip {
+            position: absolute;
+            padding: 12px 16px;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            border-radius: 8px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s;
+            font-size: 0.875rem;
+            line-height: 1.5;
+            max-width: 300px;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .tooltip strong {
+            display: block;
+            margin-bottom: 6px;
+            color: #a5b4fc;
+            font-size: 0.95rem;
+        }
+
+        .cell {
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .cell:hover {
+            stroke: #1e3c72;
+            stroke-width: 3px;
+            opacity: 1 !important;
+        }
+
+        .maia-advantage {
+            box-shadow: 0 0 8px 2px rgba(255, 215, 0, 0.6);
+        }
+
+        .axis text {
+            font-size: 12px;
+            fill: #495057;
+        }
+
+        .axis-label {
+            font-weight: 600;
+            fill: #212529;
+        }
+
+        .category-label {
+            font-weight: 700;
+            fill: #1e3c72;
+            font-size: 14px;
+        }
+
+        .cell-label {
+            user-select: none;
+            pointer-events: none;
+            filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+        }
+
+        .highlight-maia-btn {
+            padding: 10px 20px;
+            border: 2px solid #ffd700;
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            color: #1e3c72;
+        }
+
+        .highlight-maia-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
+        }
+
+        .highlight-maia-btn.active {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            color: white;
+            border-color: #ff6b6b;
+        }
+
+        .stats-container {
+            padding: 20px 40px;
+            background: #e7f3ff;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1e3c72;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: #495057;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Feature Comparison Heatmap</h1>
+            <div class="subtitle">College & Career Readiness Platforms - Comprehensive Analysis</div>
+            <div class="date">Data as of November 17, 2025</div>
+        </header>
+
+        <div class="controls">
+            <div class="filter-label">Filter by Category</div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-category="all">All Features</button>
+                <button class="filter-btn" data-category="Student Profile & Portfolio">Student Profile</button>
+                <button class="filter-btn" data-category="Career Exploration">Career Exploration</button>
+                <button class="filter-btn" data-category="College Search">College Search</button>
+                <button class="filter-btn" data-category="Course Planning">Course Planning</button>
+                <button class="filter-btn" data-category="Applications">Applications</button>
+                <button class="filter-btn" data-category="Assessments">Assessments</button>
+                <button class="filter-btn" data-category="Work-Based Learning">Work-Based Learning</button>
+                <button class="filter-btn" data-category="Counselor Tools">Counselor Tools</button>
+                <button class="filter-btn" data-category="Reporting">Reporting</button>
+                <button class="filter-btn" data-category="Integrations">Integrations</button>
+                <button class="filter-btn" data-category="AI & Innovation">AI & Innovation</button>
+                <button class="filter-btn" data-category="Accessibility">Accessibility</button>
+                <button class="filter-btn" data-category="Special Features">Special Features</button>
+                <button class="highlight-maia-btn" id="highlight-maia">Highlight Maia Advantages</button>
+            </div>
+        </div>
+
+        <div class="legend-container">
+            <div class="legend-item">
+                <div class="legend-color" style="background: #10b981; display: flex; align-items: center; justify-content: center; font-size: 14px;">✅</div>
+                <span>Full Support</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #f59e0b; display: flex; align-items: center; justify-content: center; font-size: 14px;">⚠️</div>
+                <span>Partial/Limited</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #ef4444; display: flex; align-items: center; justify-content: center; font-size: 14px;">❌</div>
+                <span>Not Available</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #3b82f6; display: flex; align-items: center; justify-content: center; font-size: 14px;">🔸</div>
+                <span>Unique Strength</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #ffd700; border: 2px solid #1e3c72; display: flex; align-items: center; justify-content: center; font-size: 14px;">⭐</div>
+                <span>Maia Advantage</span>
+            </div>
+        </div>
+
+        <div class="stats-container" id="stats">
+            <div class="stat-item">
+                <div class="stat-value" id="total-features">0</div>
+                <div class="stat-label">Total Features</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="maia-full">0</div>
+                <div class="stat-label">Maia Full Support</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="maia-unique">0</div>
+                <div class="stat-label">Maia Unique Advantages</div>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <svg id="heatmap"></svg>
+        </div>
+    </div>
+
+    <div class="tooltip" id="tooltip"></div>
+
+    <script>
+        // Data structure with all features from the comparison matrix
+        const data = [
+            // Student Profile & Portfolio
+            { category: "Student Profile & Portfolio", feature: "Student Digital Profile/Portfolio", Maia: "full", Naviance: "full", SCOIR: "full", SchooLinks: "full", Xello: "unique", Cialfo: "full", MajorClarity: "full", "Common App": "none" },
+            { category: "Student Profile & Portfolio", feature: "Resume Builder", Maia: "full", Naviance: "full", SCOIR: "full", SchooLinks: "full", Xello: "full", Cialfo: "full", MajorClarity: "full", "Common App": "none" },
+            { category: "Student Profile & Portfolio", feature: "Activity/Achievement Tracking", Maia: "full", Naviance: "full", SCOIR: "full", SchooLinks: "full", Xello: "full", Cialfo: "full", MajorClarity: "full", "Common App": "none" },
+            { category: "Student Profile & Portfolio", feature: "Skills & Competencies Tracking", Maia: "full", Naviance: "partial", SCOIR: "partial", SchooLinks: "full", Xello: "full", Cialfo: "full", MajorClarity: "unique", "Common App": "none" },
+            { category: "Student Profile & Portfolio", feature: "Micro-credentials/Badges", Maia: "full", Naviance: "none", SCOIR: "none", SchooLinks: "full", Xello: "none", Cialfo: "unique", MajorClarity: "unique", "Common App": "none" },
+            { category: "Student Profile & Portfolio", feature: "Shareable Portfolio (external)", Maia: "full", Naviance: "partial", SCOIR: "full", SchooLinks: "full", Xello: "full", Cialfo: "full", MajorClarity: "full", "Common App": "none" },
+
+            // Career Exploration & Planning
+            { category: "Career Exploration", feature: "Career Interest Assessment", Maia: "full", Naviance: "full", SCOIR: "full", SchooLinks: "full", Xello: "unique", Cialfo: "full", MajorClarity: "unique", "Common App": "none" },
+            { category: "Career Exploration", feature: "Personality Assessment", Maia: "full", Naviance: "full", SCOIR: "full", SchooLinks: "partial", Xello: "unique", Cialfo: "full", MajorClarity: "partial", "Common App": "none" },
+            { category: "Career Exploration", feature: "Learning Style Assessment", Maia: "partial", Naviance: "partial", SCOIR: "partial", SchooLinks: "partial", Xello: "full", Cialfo: "partial", MajorClarity: "partial", "Common App": "none" },
+            { category: "Career Exploration", feature: "Work Values Assessment", Maia: "partial", Naviance: "partial", SCOIR: "partial", SchooLinks: "partial", Xello: "full", Cialfo: "partial", MajorClarity: "partial", "Common App": "none" },
+            { category: "Career Exploration", feature: "Career Profiles/Database", Maia: "full", Naviance: "full", SCOIR: "full", SchooLinks: "unique", Xello: "unique", Cialfo: "full", MajorClarity: "full", "Common App": "none" },
+            { category: "Career Exploration", feature: "Career Pathways Mapping", Maia: "full", Naviance: "full", SCOIR: "full", SchooLinks: "full", Xello: "full", Cialfo: "full", MajorClarity: "unique", "Common App": "none" },
+            { category: "Career Exploration", feature: "Career Test-Drives/Simulations", Maia: "none", Naviance: "none", SCOIR: "none", SchooLinks: "none", Xello: "none", Cialfo: "none", MajorClarity: "unique", "Common App": "none" },
+            { category: "Career Exploration", feature: "Labor Market Data Integration", Maia: "partial", Naviance: "full", SCOIR: "partial", SchooLinks: "full", Xello: "full", Cialfo: "partial", MajorClarity: "full", "Common App": "none" },
+            { category: "Career Exploration", feature: "Career Mentor Videos", Maia: "partial", Naviance: "partial", SCOIR: "partial", SchooLinks: "partial", Xello: "full", Cialfo: "partial", MajorClarity: "partial", "Common App": "none" },
+
+            // College Search & Research
+            { category: "College Search", feature: "College Search/Database", Maia: "full", Naviance: "full", SCOIR: "full", SchooLinks: "full", Xello: "full", Cialfo: "unique", MajorClarity: "partial", "Common App": "none" },
+            { category: "College Search", feature: "College Matching/Recommendations", Maia: "full", Naviance: "full", SCOIR: "full", SchooLinks: "full", Xello: "full", Cialfo: "full", MajorClarity: "partial", "Common App": "none" },
+            { category: "College Search", feature: "Scattergrams (historical data)", Maia: "full", Naviance: "unique", SCOIR: "full", SchooLinks: "full", Xello: "full", Cialfo: "full", MajorClarity: "none", "Common App": "none" },
+            { category: "College Search", feature: "Virtual Campus Tours", Maia: "partial", Naviance: "partial", SCOIR: "partial", SchooLinks: "unique", Xello: "full", Cialfo: "partial", MajorClarity: "none", "Common App": "none" },
+            { category: "College Search", feature: "VR Campus Tours", Maia: "none", Naviance: "none", SCOIR: "none", SchooLinks: "full", Xello: "none", Cialfo: "none", MajorClarity: "none", "Common App": "none" },
+            { category: "College Search", feature: "Cost/Financial Aid Calculator", Maia: "full", Naviance: "full", SCOIR: "full", SchooLinks: "full", Xello: "full", Cialfo: "full", MajorClarity: "partial", "Common App": "none" },
+            { category: "College Search", feature: "International University Database", Maia: "unique", Naviance: "partial", SCOIR: "partial", SchooLinks: "none", Xello: "partial", Cialfo: "unique", MajorClarity: "none", "Common App": "none" },
+            { category: "College Search", feature: "University Direct Apply", Maia: "none", Naviance: "none", SCOIR: "none", SchooLinks: "none", Xello: "none", Cialfo: "unique", MajorClarity: "none", "Common App": "none" },
+
+            // Course & Academic Planning
+            { category: "Course Planning", feature: "4-Year Course Planning", Maia: "full", Naviance: "full", SCOIR: "full", SchooLinks: "unique", Xello: "unique", Cialfo: "full", MajorClarity: "unique", "Common App": "none" },
+            { category: "Course Planning", feature: "6-Year Course Planning (middle school)", Maia: "partial", Naviance: "partial", SCOIR: "partial", SchooLinks: "full", Xello: "full", Cialfo: "partial", MajorClarity: "full", "Common App": "none" },
+            { category: "Course Planning", feature: "Graduation Requirements Tracking", Maia: "full", Naviance: "full", SCOIR: "full", SchooLinks: "full", Xello: "full", Cialfo: "full", MajorClarity: "full", "Common App": "none" },
+            { category: "Course Planning", feature: "A-G Eligibility (California)", Maia: "full", Naviance: "full", SCOIR: "partial", SchooLinks: "full", Xello: "partial", Cialfo: "partial", MajorClarity: "partial", "Common App": "none" },
+            { category: "Course Planning", feature: "GPA Tracking/Calculation", Maia: "full", Naviance: "full", SCOIR: "full", SchooLinks: "full", Xello: "full", Cialfo: "full", MajorClarity: "full", "Common App": "none" },
+            { category: "Course Planning", feature: "Course Prerequisites Tracking", Maia: "full", Naviance: "full", SCOIR: "full", SchooLinks: "full", Xello: "full", Cialfo: "partial", MajorClarity: "partial", "Common App": "none" },
+            { category: "Course Planning", feature: "Electronic Signature (4-year plans)", Maia: "partial", Naviance: "partial", SCOIR: "partial", SchooLinks: "full", Xello: "partial", Cialfo: "partial", MajorClarity: "partial", "Common App": "none" },
+            { category: "Course Planning", feature: "State-Specific Compliance Automation", Maia: "partial", Naviance: "partial", SCOIR: "partial", SchooLinks: "unique", Xello: "partial", Cialfo: "none", MajorClarity: "partial", "Common App": "none" },
+
+            // College Applications
+            { category: "Applications", feature: "Application Tracking Dashboard", Maia: "full", Naviance: "full", SCOIR: "full", SchooLinks: "full", Xello: "full", Cialfo: "full", MajorClarity: "partial", "Common App": "none" },
+            { category: "Applications", feature: "Application Deadline Tracking", Maia: "full", Naviance: "full", SCOIR: "full", SchooLinks: "full", Xello: "full", Cialfo: "full", MajorClarity: "partial", "Common App": "none" },
+            { category: "Applications", feature: "Common App Integration", Maia: "full", Naviance: "full", SCOIR: "unique", SchooLinks: "full", Xello: "partial", Cialfo: "full", MajorClarity: "none", "Common App": "none" },
+            { category: "Applications", feature: "Coalition App Integration", Maia: "none", Naviance: "none", SCOIR: "unique", SchooLinks: "none", Xello: "none", Cialfo: "none", MajorClarity: "none", "Common App": "none" },
+            { category: "Applications", feature: "UC/CSU Bulk Submission", Maia: "full", Naviance: "full", SCOIR: "partial", SchooLinks: "full", Xello: "partial", Cialfo: "full", MajorClarity: "none", "Common App": "none" },
+            { category: "Applications", feature: "UCAS Integration (UK)", Maia: "partial", Naviance: "none", SCOIR: "none", SchooLinks: "none", Xello: "partial", Cialfo: "full", MajorClarity: "none", "Common App": "none" },
+            { category: "Applications", feature: "Recommendation Letter Management", Maia: "full", Naviance: "full", SCOIR: "full", SchooLinks: "full", Xello: "full", Cialfo: "full", MajorClarity: "partial", "Common App": "none" },
+            { category: "Applications", feature: "Transcript Request/Delivery", Maia: "full", Naviance: "full", SCOIR: "full", SchooLinks: "full", Xello: "full", Cialfo: "full", MajorClarity: "partial", "Common App": "none" },
+            { category: "Applications", feature: "Document Tracking (submissions)", Maia: "full", Naviance: "full", SCOIR: "full", SchooLinks: "full", Xello: "full", Cialfo: "full", MajorClarity: "partial", "Common App": "none" },
+
+            // Assessments & Curriculum
+            { category: "Assessments", feature: "Built-in CCR Curriculum/Lessons", Maia: "partial", Naviance: "partial", SCOIR: "partial", SchooLinks: "unique", Xello: "unique", Cialfo: "partial", MajorClarity: "unique", "Common App": "none" },
+            { category: "Assessments", feature: "Self-Guided Learning Modules", Maia: "partial", Naviance: "partial", SCOIR: "partial", SchooLinks: "full", Xello: "full", Cialfo: "partial", MajorClarity: "full", "Common App": "none" },
+            { category: "Assessments", feature: "SEL (Social-Emotional Learning)", Maia: "full", Naviance: "partial", SCOIR: "partial", SchooLinks: "partial", Xello: "partial", Cialfo: "partial", MajorClarity: "partial", "Common App": "none" },
+            { category: "Assessments", feature: "Financial Literacy Curriculum", Maia: "partial", Naviance: "partial", SCOIR: "partial", SchooLinks: "partial", Xello: "full", Cialfo: "partial", MajorClarity: "partial", "Common App": "none" },
+            { category: "Assessments", feature: "21st Century Skills", Maia: "full", Naviance: "partial", SCOIR: "partial", SchooLinks: "full", Xello: "full", Cialfo: "partial", MajorClarity: "full", "Common App": "none" },
+            { category: "Assessments", feature: "Standards-Aligned Content", Maia: "partial", Naviance: "partial", SCOIR: "partial", SchooLinks: "full", Xello: "full", Cialfo: "none", MajorClarity: "full", "Common App": "none" },
+            { category: "Assessments", feature: "CASEL Competencies", Maia: "partial", Naviance: "none", SCOIR: "none", SchooLinks: "full", Xello: "partial", Cialfo: "none", MajorClarity: "partial", "Common App": "none" },
+
+            // Work-Based Learning
+            { category: "Work-Based Learning", feature: "WBL Experience Tracking", Maia: "full", Naviance: "partial", SCOIR: "partial", SchooLinks: "unique", Xello: "unique", Cialfo: "full", MajorClarity: "unique", "Common App": "none" },
+            { category: "Work-Based Learning", feature: "Internship/Job Shadow Management", Maia: "full", Naviance: "partial", SCOIR: "partial", SchooLinks: "full", Xello: "full", Cialfo: "full", MajorClarity: "full", "Common App": "none" },
+            { category: "Work-Based Learning", feature: "Industry Partner Portal", Maia: "none", Naviance: "none", SCOIR: "none", SchooLinks: "unique", Xello: "none", Cialfo: "none", MajorClarity: "none", "Common App": "none" },
+            { category: "Work-Based Learning", feature: "Industry Partner Database/CRM", Maia: "none", Naviance: "none", SCOIR: "none", SchooLinks: "unique", Xello: "none", Cialfo: "none", MajorClarity: "partial", "Common App": "none" },
+            { category: "Work-Based Learning", feature: "WBL Opportunity Matching", Maia: "partial", Naviance: "none", SCOIR: "partial", SchooLinks: "full", Xello: "full", Cialfo: "partial", MajorClarity: "partial", "Common App": "none" },
+            { category: "Work-Based Learning", feature: "Service Learning/Volunteer Tracking", Maia: "full", Naviance: "partial", SCOIR: "partial", SchooLinks: "full", Xello: "full", Cialfo: "full", MajorClarity: "partial", "Common App": "none" },
+            { category: "Work-Based Learning", feature: "Apprenticeship Tracking", Maia: "partial", Naviance: "none", SCOIR: "partial", SchooLinks: "full", Xello: "full", Cialfo: "partial", MajorClarity: "partial", "Common App": "none" },
+            { category: "Work-Based Learning", feature: "Supervisor Verification/Evaluations", Maia: "partial", Naviance: "none", SCOIR: "none", SchooLinks: "full", Xello: "partial", Cialfo: "partial", MajorClarity: "partial", "Common App": "none" },
+
+            // Counselor & Staff Tools
+            { category: "Counselor Tools", feature: "Counselor Dashboard", Maia: "full", Naviance: "full", SCOIR: "full", SchooLinks: "full", Xello: "full", Cialfo: "full", MajorClarity: "full", "Common App": "none" },
+            { category: "Counselor Tools", feature: "Caseload Management", Maia: "full", Naviance: "full", SCOIR: "full", SchooLinks: "full", Xello: "full", Cialfo: "full", MajorClarity: "partial", "Common App": "none" },
+            { category: "Counselor Tools", feature: "Student Progress Tracking", Maia: "full", Naviance: "full", SCOIR: "full", SchooLinks: "full", Xello: "full", Cialfo: "full", MajorClarity: "full", "Common App": "none" },
+            { category: "Counselor Tools", feature: "Bulk Messaging/Communications", Maia: "full", Naviance: "full", SCOIR: "full", SchooLinks: "full", Xello: "full", Cialfo: "full", MajorClarity: "partial", "Common App": "none" },
+            { category: "Counselor Tools", feature: "College Rep Visit Scheduling", Maia: "full", Naviance: "unique", SCOIR: "full", SchooLinks: "full", Xello: "partial", Cialfo: "full", MajorClarity: "none", "Common App": "none" },
+            { category: "Counselor Tools", feature: "Event Management", Maia: "full", Naviance: "full", SCOIR: "full", SchooLinks: "full", Xello: "full", Cialfo: "full", MajorClarity: "partial", "Common App": "none" },
+            { category: "Counselor Tools", feature: "Task Assignment", Maia: "full", Naviance: "full", SCOIR: "full", SchooLinks: "full", Xello: "full", Cialfo: "full", MajorClarity: "full", "Common App": "none" },
+            { category: "Counselor Tools", feature: "Form Management (eSignature)", Maia: "partial", Naviance: "partial", SCOIR: "partial", SchooLinks: "full", Xello: "partial", Cialfo: "partial", MajorClarity: "partial", "Common App": "none" },
+
+            // Reporting & Analytics
+            { category: "Reporting", feature: "Real-Time Dashboards", Maia: "full", Naviance: "full", SCOIR: "full", SchooLinks: "unique", Xello: "full", Cialfo: "full", MajorClarity: "full", "Common App": "none" },
+            { category: "Reporting", feature: "District/Campus/Student Level Reports", Maia: "full", Naviance: "full", SCOIR: "full", SchooLinks: "unique", Xello: "full", Cialfo: "full", MajorClarity: "full", "Common App": "none" },
+            { category: "Reporting", feature: "Data Exports", Maia: "full", Naviance: "full", SCOIR: "full", SchooLinks: "full", Xello: "full", Cialfo: "full", MajorClarity: "full", "Common App": "none" },
+            { category: "Reporting", feature: "State Compliance Reporting", Maia: "partial", Naviance: "partial", SCOIR: "partial", SchooLinks: "unique", Xello: "partial", Cialfo: "none", MajorClarity: "partial", "Common App": "none" },
+            { category: "Reporting", feature: "CCMR Tracking (Texas)", Maia: "none", Naviance: "none", SCOIR: "none", SchooLinks: "unique", Xello: "none", Cialfo: "none", MajorClarity: "none", "Common App": "none" },
+            { category: "Reporting", feature: "CCMR Outcomes Bonus (Texas funding)", Maia: "none", Naviance: "none", SCOIR: "none", SchooLinks: "unique", Xello: "none", Cialfo: "none", MajorClarity: "none", "Common App": "none" },
+            { category: "Reporting", feature: "CTE Program Completion Dashboard", Maia: "none", Naviance: "partial", SCOIR: "none", SchooLinks: "unique", Xello: "none", Cialfo: "none", MajorClarity: "full", "Common App": "none" },
+            { category: "Reporting", feature: "Graduation Predictions", Maia: "none", Naviance: "partial", SCOIR: "partial", SchooLinks: "full", Xello: "partial", Cialfo: "partial", MajorClarity: "partial", "Common App": "none" },
+            { category: "Reporting", feature: "Alumni Outcomes Tracking", Maia: "partial", Naviance: "partial", SCOIR: "partial", SchooLinks: "unique", Xello: "partial", Cialfo: "partial", MajorClarity: "partial", "Common App": "none" },
+
+            // Integrations & Technical
+            { category: "Integrations", feature: "SIS Integration", Maia: "full", Naviance: "unique", SCOIR: "full", SchooLinks: "full", Xello: "full", Cialfo: "full", MajorClarity: "full", "Common App": "none" },
+            { category: "Integrations", feature: "SSO (Single Sign-On)", Maia: "full", Naviance: "full", SCOIR: "full", SchooLinks: "full", Xello: "full", Cialfo: "full", MajorClarity: "full", "Common App": "none" },
+            { category: "Integrations", feature: "Common App Integration", Maia: "full", Naviance: "full", SCOIR: "unique", SchooLinks: "full", Xello: "partial", Cialfo: "full", MajorClarity: "none", "Common App": "none" },
+            { category: "Integrations", feature: "Parchment Integration", Maia: "full", Naviance: "partial", SCOIR: "partial", SchooLinks: "partial", Xello: "partial", Cialfo: "full", MajorClarity: "partial", "Common App": "none" },
+            { category: "Integrations", feature: "Slate/CRM Integration", Maia: "partial", Naviance: "partial", SCOIR: "unique", SchooLinks: "partial", Xello: "partial", Cialfo: "partial", MajorClarity: "partial", "Common App": "none" },
+            { category: "Integrations", feature: "EdFi Certified", Maia: "partial", Naviance: "partial", SCOIR: "partial", SchooLinks: "partial", Xello: "full", Cialfo: "partial", MajorClarity: "partial", "Common App": "none" },
+            { category: "Integrations", feature: "API Access", Maia: "partial", Naviance: "full", SCOIR: "partial", SchooLinks: "full", Xello: "partial", Cialfo: "full", MajorClarity: "partial", "Common App": "none" },
+            { category: "Integrations", feature: "SFTP/Data Exchange", Maia: "full", Naviance: "full", SCOIR: "full", SchooLinks: "full", Xello: "full", Cialfo: "full", MajorClarity: "partial", "Common App": "none" },
+
+            // AI & Innovation
+            { category: "AI & Innovation", feature: "AI-Powered Recommendations", Maia: "full", Naviance: "partial", SCOIR: "unique", SchooLinks: "unique", Xello: "none", Cialfo: "unique", MajorClarity: "partial", "Common App": "none" },
+            { category: "AI & Innovation", feature: "AI Letter Writing", Maia: "unique", Naviance: "partial", SCOIR: "none", SchooLinks: "none", Xello: "none", Cialfo: "none", MajorClarity: "none", "Common App": "none" },
+            { category: "AI & Innovation", feature: "Predictive Analytics/Chances", Maia: "partial", Naviance: "partial", SCOIR: "unique", SchooLinks: "partial", Xello: "none", Cialfo: "partial", MajorClarity: "partial", "Common App": "none" },
+            { category: "AI & Innovation", feature: "AI Chatbot/Assistant", Maia: "partial", Naviance: "partial", SCOIR: "none", SchooLinks: "partial", Xello: "none", Cialfo: "partial", MajorClarity: "none", "Common App": "none" },
+            { category: "AI & Innovation", feature: "Intelligent Matching", Maia: "full", Naviance: "full", SCOIR: "unique", SchooLinks: "full", Xello: "full", Cialfo: "full", MajorClarity: "full", "Common App": "none" },
+            { category: "AI & Innovation", feature: "Machine Learning Models", Maia: "partial", Naviance: "partial", SCOIR: "unique", SchooLinks: "unique", Xello: "none", Cialfo: "partial", MajorClarity: "partial", "Common App": "none" },
+
+            // Accessibility & Languages
+            { category: "Accessibility", feature: "Multilingual Support", Maia: "unique", Naviance: "partial", SCOIR: "partial", SchooLinks: "partial", Xello: "unique", Cialfo: "unique", MajorClarity: "none", "Common App": "partial" },
+            { category: "Accessibility", feature: "Deep Localization (cultural)", Maia: "unique", Naviance: "none", SCOIR: "none", SchooLinks: "none", Xello: "partial", Cialfo: "full", MajorClarity: "none", "Common App": "none" },
+            { category: "Accessibility", feature: "WCAG 2.2 Accessibility", Maia: "partial", Naviance: "partial", SCOIR: "partial", SchooLinks: "partial", Xello: "full", Cialfo: "partial", MajorClarity: "partial", "Common App": "partial" },
+            { category: "Accessibility", feature: "Mobile App (iOS/Android)", Maia: "partial", Naviance: "full", SCOIR: "full", SchooLinks: "partial", Xello: "full", Cialfo: "full", MajorClarity: "partial", "Common App": "full" },
+            { category: "Accessibility", feature: "Mobile Responsive Web", Maia: "full", Naviance: "full", SCOIR: "full", SchooLinks: "full", Xello: "full", Cialfo: "full", MajorClarity: "full", "Common App": "full" },
+            { category: "Accessibility", feature: "Parent/Guardian Portal", Maia: "full", Naviance: "full", SCOIR: "full", SchooLinks: "full", Xello: "full", Cialfo: "full", MajorClarity: "partial", "Common App": "none" },
+
+            // Special Features & Unique Differentiators
+            { category: "Special Features", feature: "K-5 Elementary Coverage", Maia: "partial", Naviance: "none", SCOIR: "none", SchooLinks: "full", Xello: "full", Cialfo: "none", MajorClarity: "partial", "Common App": "none" },
+            { category: "Special Features", feature: "International Schools Focus", Maia: "unique", Naviance: "partial", SCOIR: "partial", SchooLinks: "none", Xello: "partial", Cialfo: "unique", MajorClarity: "none", "Common App": "partial" },
+            { category: "Special Features", feature: "70+ Countries Presence", Maia: "unique", Naviance: "none", SCOIR: "none", SchooLinks: "none", Xello: "partial", Cialfo: "full", MajorClarity: "none", "Common App": "full" },
+            { category: "Special Features", feature: "Three-Sided Network (students-schools-colleges)", Maia: "none", Naviance: "partial", SCOIR: "unique", SchooLinks: "none", Xello: "partial", Cialfo: "partial", MajorClarity: "none", "Common App": "none" },
+            { category: "Special Features", feature: "College Enrollment Marketing Tools", Maia: "none", Naviance: "partial", SCOIR: "unique", SchooLinks: "none", Xello: "partial", Cialfo: "partial", MajorClarity: "none", "Common App": "none" },
+            { category: "Special Features", feature: "Free Statewide Access Model", Maia: "none", Naviance: "none", SCOIR: "none", SchooLinks: "partial", Xello: "unique", Cialfo: "none", MajorClarity: "none", "Common App": "none" },
+            { category: "Special Features", feature: "Direct Admissions Support", Maia: "partial", Naviance: "partial", SCOIR: "partial", SchooLinks: "partial", Xello: "partial", Cialfo: "partial", MajorClarity: "none", "Common App": "unique" },
+            { category: "Special Features", feature: "University Direct Apply (bypass apps)", Maia: "none", Naviance: "none", SCOIR: "none", SchooLinks: "none", Xello: "none", Cialfo: "unique", MajorClarity: "none", "Common App": "none" },
+            { category: "Special Features", feature: "Career Test-Drives", Maia: "none", Naviance: "none", SCOIR: "none", SchooLinks: "none", Xello: "none", Cialfo: "none", MajorClarity: "unique", "Common App": "none" },
+            { category: "Special Features", feature: "College Communities/Ambassador Program", Maia: "none", Naviance: "none", SCOIR: "partial", SchooLinks: "none", Xello: "full", Cialfo: "partial", MajorClarity: "none", "Common App": "none" }
+        ];
+
+        // Platforms
+        const platforms = ["Maia", "Naviance", "SCOIR", "SchooLinks", "Xello", "Cialfo", "MajorClarity", "Common App"];
+
+        // Color scale
+        const colorScale = {
+            full: "#10b981",      // Green
+            partial: "#f59e0b",   // Orange
+            none: "#ef4444",      // Red
+            unique: "#3b82f6"     // Blue
+        };
+
+        // Emoji/Symbol mapping
+        const emojiScale = {
+            full: "✅",
+            partial: "⚠️",
+            none: "❌",
+            unique: "🔸"
+        };
+
+        // Maia advantages (where Maia has unique or better than most competitors)
+        const maiaAdvantages = data.filter(d => {
+            const maiaValue = d.Maia;
+            const competitorValues = platforms.slice(1).map(p => d[p]);
+
+            // Maia has unique
+            if (maiaValue === "unique") return true;
+
+            // Maia has full when most competitors have partial or none
+            if (maiaValue === "full") {
+                const fullCount = competitorValues.filter(v => v === "full" || v === "unique").length;
+                if (fullCount <= 3) return true; // Maia better than most
+            }
+
+            return false;
+        }).map(d => d.feature);
+
+        // Calculate stats
+        let totalFeatures = data.length;
+        let maiaFull = data.filter(d => d.Maia === "full" || d.Maia === "unique").length;
+        let maiaUnique = data.filter(d => d.Maia === "unique").length;
+
+        document.getElementById("total-features").textContent = totalFeatures;
+        document.getElementById("maia-full").textContent = maiaFull;
+        document.getElementById("maia-unique").textContent = maiaUnique;
+
+        // Dimensions
+        const margin = { top: 100, right: 200, bottom: 60, left: 300 };
+        const cellWidth = 70;
+        const cellHeight = 30;
+
+        let filteredData = [...data];
+        let highlightMaia = false;
+
+        // Initialize
+        renderHeatmap();
+
+        // Filter buttons
+        d3.selectAll(".filter-btn").on("click", function() {
+            const category = d3.select(this).attr("data-category");
+
+            d3.selectAll(".filter-btn").classed("active", false);
+            d3.select(this).classed("active", true);
+
+            if (category === "all") {
+                filteredData = [...data];
+            } else {
+                filteredData = data.filter(d => d.category === category);
+            }
+
+            renderHeatmap();
+        });
+
+        // Highlight Maia button
+        d3.select("#highlight-maia").on("click", function() {
+            highlightMaia = !highlightMaia;
+            d3.select(this).classed("active", highlightMaia);
+            renderHeatmap();
+        });
+
+        function renderHeatmap() {
+            // Clear existing
+            d3.select("#heatmap").selectAll("*").remove();
+
+            const width = margin.left + platforms.length * cellWidth + margin.right;
+            const height = margin.top + filteredData.length * cellHeight + margin.bottom;
+
+            const svg = d3.select("#heatmap")
+                .attr("width", width)
+                .attr("height", height);
+
+            const g = svg.append("g")
+                .attr("transform", `translate(${margin.left},${margin.top})`);
+
+            // Platform labels (top)
+            g.selectAll(".platform-label")
+                .data(platforms)
+                .enter()
+                .append("text")
+                .attr("class", "axis-label")
+                .attr("x", (d, i) => i * cellWidth + cellWidth / 2)
+                .attr("y", -20)
+                .attr("text-anchor", "middle")
+                .text(d => d)
+                .style("font-size", "14px")
+                .style("font-weight", "600");
+
+            // Feature labels (left)
+            g.selectAll(".feature-label")
+                .data(filteredData)
+                .enter()
+                .append("text")
+                .attr("class", "axis text")
+                .attr("x", -10)
+                .attr("y", (d, i) => i * cellHeight + cellHeight / 2)
+                .attr("dy", ".35em")
+                .attr("text-anchor", "end")
+                .text(d => d.feature)
+                .style("font-size", "11px");
+
+            // Category labels (left side, grouped)
+            const categories = [...new Set(filteredData.map(d => d.category))];
+            categories.forEach(cat => {
+                const catData = filteredData.filter(d => d.category === cat);
+                const startIndex = filteredData.indexOf(catData[0]);
+                const endIndex = filteredData.indexOf(catData[catData.length - 1]);
+                const midPoint = (startIndex + endIndex) / 2;
+
+                g.append("text")
+                    .attr("class", "category-label")
+                    .attr("x", -280)
+                    .attr("y", midPoint * cellHeight + cellHeight / 2)
+                    .attr("dy", ".35em")
+                    .attr("text-anchor", "start")
+                    .text(cat)
+                    .style("font-size", "12px");
+            });
+
+            // Cells
+            filteredData.forEach((row, i) => {
+                platforms.forEach((platform, j) => {
+                    const value = row[platform];
+                    const isMaiaAdvantage = highlightMaia && maiaAdvantages.includes(row.feature) && platform === "Maia";
+
+                    const cell = g.append("rect")
+                        .attr("class", isMaiaAdvantage ? "cell maia-advantage" : "cell")
+                        .attr("x", j * cellWidth)
+                        .attr("y", i * cellHeight)
+                        .attr("width", cellWidth - 2)
+                        .attr("height", cellHeight - 2)
+                        .attr("fill", colorScale[value])
+                        .attr("rx", 4)
+                        .attr("opacity", highlightMaia && !isMaiaAdvantage ? 0.3 : 1);
+
+                    cell.on("mouseover", function(event) {
+                        const tooltip = d3.select("#tooltip");
+                        tooltip.style("opacity", 1)
+                            .html(`<strong>${platform}</strong>${row.feature}<br/>Status: ${value.charAt(0).toUpperCase() + value.slice(1)} Support`);
+
+                        d3.select(this).attr("opacity", 1);
+                    })
+                    .on("mousemove", function(event) {
+                        d3.select("#tooltip")
+                            .style("left", (event.pageX + 15) + "px")
+                            .style("top", (event.pageY - 28) + "px");
+                    })
+                    .on("mouseout", function() {
+                        d3.select("#tooltip").style("opacity", 0);
+                        if (highlightMaia && !isMaiaAdvantage) {
+                            d3.select(this).attr("opacity", 0.3);
+                        }
+                    });
+
+                    // Add emoji/text label to cell
+                    g.append("text")
+                        .attr("class", "cell-label")
+                        .attr("x", j * cellWidth + cellWidth / 2)
+                        .attr("y", i * cellHeight + cellHeight / 2)
+                        .attr("text-anchor", "middle")
+                        .attr("dy", ".35em")
+                        .text(emojiScale[value])
+                        .style("font-size", "16px")
+                        .style("pointer-events", "none")
+                        .attr("opacity", highlightMaia && !isMaiaAdvantage ? 0.3 : 1);
+                });
+            });
+        }
+    </script>
+</body>
+</html>
