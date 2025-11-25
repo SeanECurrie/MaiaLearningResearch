@@ -1,9 +1,14 @@
 # MaiaLearning Competitive Analysis - Project Inventory
 
+> **NOTICE:** This inventory reflects the pre-normalization structure. As of November 25, 2025, the repository has been reorganized:
+> - All Maia-specific files are now under `MAIA-PROJECT/`
+> - Legacy files are in `archive/`
+> - See `MAIA-PROJECT/README.md` for current deliverables location
+
 **Project:** Maia Learning Competitive Analysis
 **Date:** November 24, 2025
 **Status:** Version 2.0 Complete
-**Cross-Reference:** See `03-DELIVERABLES/VERSION-HISTORY.md` for version details
+**Cross-Reference:** See `MAIA-PROJECT/03-DELIVERABLES/VERSION-HISTORY.md` for version details
 
 ---
 
@@ -210,5 +215,22 @@
 
 ---
 
+## Post-Normalization Structure (November 25, 2025)
+
+```
+MaiaLearningResearch/
+├── docs/                    # Framework documentation
+├── templates/               # Reusable templates
+├── 06-AUTOMATION/           # Framework automation scripts
+├── skills/local/            # Version-controlled skill definitions
+├── scripts/                 # Utility scripts
+├── MAIA-PROJECT/            # Maia Learning project instance
+└── archive/                 # Archived files
+```
+
+For current file locations, see `MAIA-PROJECT/README.md`.
+
+---
+
 **Inventory Generated:** November 24, 2025
-**Last Updated:** November 24, 2025
+**Last Updated:** November 25, 2025

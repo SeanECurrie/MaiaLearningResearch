@@ -1,120 +1,98 @@
-# Maia Learning Competitive Analysis Research
+# Competitive Analysis Framework
 
-**Client:** Maia Learning
-**Start Date:** 11-16-2024
-**Scope:** 7 Competitors
-**Status:** See `06-PROJECT-MANAGEMENT/CONTINUATION-NOTES.md` for current status
+A reusable framework for enterprise-grade competitive analysis, developed from the Maia Learning project (November 2025).
 
----
+## Repository Structure
 
-## Quick Start for AI Assistants
-
-**When starting any conversation:**
-1. Check `06-PROJECT-MANAGEMENT/CONTINUATION-NOTES.md` - where we left off
-2. Check `06-PROJECT-MANAGEMENT/TASK-TRACKER.md` - current task
-3. Summarize status and ask user: Continue | Review | Discuss
-
-**Full context:** See `06-PROJECT-MANAGEMENT/PROJECT-INSTRUCTIONS.md`
-
----
-
-## Skills Setup (First Time Only)
-
-This project uses the **competitive-research-brightdata** Claude skill for enterprise-grade research methodology.
-
-### Installation
-
-```bash
-bash scripts/install-skill.sh
+```
+MaiaLearningResearch/
+├── docs/                        # Framework documentation
+│   ├── COMPETITIVE-ANALYSIS-WORKFLOW.md   # Master workflow guide
+│   ├── PROJECT-INVENTORY.md     # File inventory
+│   └── plans/                   # Implementation plans
+├── templates/                   # Reusable project templates
+│   └── competitive-analysis/    # Start new projects here
+├── skills/local/                # Version-controlled skill definitions
+│   ├── competitive-analysis-quality-assurance/
+│   └── competitive-research-brightdata/
+├── scripts/                     # Framework utilities
+│   └── install-skills.sh        # Sync skills to ~/.claude/skills/
+├── MAIA-PROJECT/                # Example project instance (V2.0 complete)
+├── archive/                     # Archived files from normalization
+└── 06-AUTOMATION/               # Automation scripts and templates
 ```
 
-Then restart Claude CLI to activate the skill.
+## Quick Start
 
-### What the Skill Provides
+### For New Projects
 
-- **5-Phase Research Workflow:** Clarify → Plan → Execute → Analyze → Report
-- **Analytical Frameworks:** SWOT, Porter's Five Forces, competitive positioning
-- **Report Templates:** Company profiles, competitive analysis, market intelligence
-- **Best Practices:** Search strategies, batch operations, quality assurance
+1. Copy the template:
+   ```bash
+   cp -r templates/competitive-analysis /path/to/new-project/
+   ```
 
-### Auto-Activation
+2. Follow the workflow:
+   - See `docs/COMPETITIVE-ANALYSIS-WORKFLOW.md`
+   - Reference `MAIA-PROJECT/` for examples
 
-The skill automatically activates when Claude detects research requests such as:
-- "Research [company name]"
-- "Conduct competitive analysis of X vs Y"
-- "Create a market report for [industry]"
-- "Compare [products/services]"
+3. Install skills (if not already installed):
+   ```bash
+   ./scripts/install-skills.sh
+   ```
 
-See `06-PROJECT-MANAGEMENT/PROJECT-INSTRUCTIONS.md` for detailed skill documentation.
+### For Reviewing the Maia Project
 
----
+The complete Maia Learning competitive analysis is in `MAIA-PROJECT/`:
+- **Deliverables:** `MAIA-PROJECT/03-DELIVERABLES/current/`
+- **Documentation:** `MAIA-PROJECT/README.md`
 
-## Directory Structure
+## Skills
 
-### 00-PROJECT-OVERVIEW/
-- **research-objectives.md** - 18 key research questions
-- **competitor-selection-rationale.md** - Why these 7 competitors
-- **progress-tracker.md** - Phase-level status (points to TASK-TRACKER for details)
+This framework uses two custom Claude skills:
 
-### 01-COMPANY-PROFILES/
-Individual company profiles (1/8 complete)
-- maia-learning.md ✅
-- [7 more to come]
+### competitive-research-brightdata
+Enterprise-grade research methodology using Bright Data tools.
+- 26-question research template
+- Batch search/scrape strategies
+- Citation generation
+- Output schemas
 
-### 02-RAW-RESEARCH-DATA/
-- search-results/
-- scraped-content/
+### competitive-analysis-quality-assurance
+Systematic fact-checking and quality assurance.
+- Source attribution verification
+- Marketing language detection
+- Cross-document consistency checks
+- QA report generation
 
-### 03-COMPARATIVE-ANALYSIS/
-Feature matrices, pricing, positioning (ready for Phase 3)
+### Installing/Updating Skills
 
-### 04-STRATEGIC-INSIGHTS/
-SWOT, competitive maps, recommendations (ready for Phase 4)
+```bash
+# Install from repo to ~/.claude/skills/
+./scripts/install-skills.sh
 
-### 05-DELIVERABLES/
-Executive summary, full report, presentation (ready for Phase 5)
+# With backup of existing skills
+./scripts/install-skills.sh --backup
 
-### 06-PROJECT-MANAGEMENT/ ⭐ START HERE
-- **FOR-PROJECT-KNOWLEDGE.md** - Copy to Project Knowledge
-- **PROJECT-INSTRUCTIONS.md** - Complete AI context
-- **TASK-TRACKER.md** - Detailed task list with checkboxes
-- **CONTINUATION-NOTES.md** - Conversation handoff notes
-- **RESEARCH-GAPS.md** - Areas needing investigation
-- **METHODOLOGY-NOTES.md** - Research decisions
+# Preview changes without installing
+./scripts/install-skills.sh --dry-run
+```
 
-### PROGRESS-REPORTS/
-Timestamped updates
+## Documentation
 
----
+| Document | Purpose |
+|----------|---------|
+| `docs/COMPETITIVE-ANALYSIS-WORKFLOW.md` | Master workflow guide for all scenarios |
+| `templates/competitive-analysis/README.md` | Template quick start |
+| `MAIA-PROJECT/README.md` | Example project documentation |
+| `archive/README.md` | Archived files reference |
 
-## The 8 Companies
+## Version History
 
-1. Maia Learning ✅ (client baseline - complete)
-2. Naviance (PowerSchool) ✅ (complete)
-3. SCOIR - Next
-4. SchooLinks
-5. Xello
-6. Cialfo
-7. MajorClarity (Edmentum)
-8. Common App
-
----
-
-## Research Methodology
-
-- **Approach:** 8-10 tool calls per competitor
-- **Process:** Search → Scrape → Profile → Document
-- **Quality:** Primary sources, 2024-2025 focus, cross-verification
-- **Tools:** Bright Data competitive-research skill
+- **November 25, 2025:** Repository normalization (framework/project separation)
+- **November 24, 2025:** V2.0 US-Primary strategy pivot complete
+- **November 2025:** Maia Learning project completed (9.5/10 quality)
 
 ---
 
-## Current Status
-
-**For up-to-date status, see:**
-- **CONTINUATION-NOTES.md** - Latest entry shows what's done, what's next, current %
-- **TASK-TRACKER.md** - Detailed task-by-task progress
-
----
-
-**Last Updated:** 11-15-2025
+**Framework Version:** 1.0
+**Based On:** Maia Learning Competitive Analysis (September-November 2025)

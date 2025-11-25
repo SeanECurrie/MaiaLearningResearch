@@ -145,6 +145,18 @@ See `deliverables-templates/` for:
 
 ---
 
+## Example Project
+
+For a complete example of this framework in action, see the Maia Learning project:
+
+- **Location:** `MAIA-PROJECT/` in the repository root
+- **Deliverables:** `MAIA-PROJECT/03-DELIVERABLES/current/`
+- **Documentation:** `MAIA-PROJECT/README.md`
+
+This project demonstrates V2.0 quality deliverables (9.5/10) achieved through the full workflow.
+
+---
+
 **Template Version:** 1.0
 **Based On:** Maia Learning Competitive Analysis (November 2025)
 **Quality Level:** Enterprise-grade (9.5/10)

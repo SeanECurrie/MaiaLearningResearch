@@ -4,6 +4,8 @@
 **Target Quality:** 9.5/10 (client-ready)
 **Based On:** Maia Learning competitive analysis project (November 2025)
 
+> **Note:** For the Maia Learning project instance, all project-specific files are located under `MAIA-PROJECT/`. For new projects, follow the directory structure in `templates/competitive-analysis/`.
+
 ---
 
 ## Workflow Overview
@@ -83,18 +85,20 @@ Use brainstorming to clarify:
 3. Create feature branch for this analysis
 4. Set up directory structure per template
 
-**Directory Structure:**
+**Directory Structure (New Projects):**
 ```
-ProjectName/
-├── 00-PROJECT-MANAGEMENT/
+[PROJECT]/
+├── 00-PROJECT-OVERVIEW/
 ├── 01-RESEARCH-INPUTS/
 ├── 02-ANALYSIS-OUTPUTS/
 ├── 03-DELIVERABLES/
+│   └── current/          # Canonical deliverables location
 ├── 04-QA-DOCUMENTATION/
 ├── 05-ITERATIONS/
-├── 06-AUTOMATION/
-└── docs/
+└── 06-PROJECT-MANAGEMENT/
 ```
+
+> **Example:** See `MAIA-PROJECT/` for a complete project instance.
 
 ---
 

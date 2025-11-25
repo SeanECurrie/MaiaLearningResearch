@@ -164,26 +164,62 @@ No explicit "Timeline: X days/hours" references remain in:
 
 ---
 
-## Next Steps (Future Enhancements)
+## Repository Normalization (November 25, 2025)
 
-The following enhancements are documented but not yet implemented:
+**Plan:** `docs/plans/2025-11-25-maia-project-normalization-and-skill-updates.md`
 
-1. **Research Skill Enhancements** (see `SKILL-UPDATES-competitive-research.md`):
-   - Output format standardization (JSON schema)
-   - Research question templates
-   - Data validation rules
-   - Auto-citation generation
+Successfully separated framework components from the Maia Learning project instance:
 
-2. **QA Skill Enhancements** (see `SKILL-UPDATES-competitive-analysis-qa.md`):
-   - Automated consistency matrix
-   - Citation format compliance checking
-   - Marketing language detection
-   - Version comparison review
+### Structure Changes
+- **MAIA-PROJECT/**: All project-specific files consolidated
+- **archive/**: Legacy scripts, temp files, skill artifacts archived
+- **skills/local/**: Version-controlled skill definitions
+- **scripts/**: Framework utilities (install-skills.sh)
 
-These are documented as future implementation recommendations.
+### Skill Enhancements Implemented
+
+**competitive-research-brightdata:**
+- ✅ Research Question Template (26 questions)
+- ✅ Output Schema (company profile structure)
+- ✅ Citation Generation guidelines
+- ✅ Output Location conventions
+
+**competitive-analysis-quality-assurance:**
+- ✅ Phase 5.5: Source Attribution Verification
+- ✅ Phase 5.6: Marketing Language Detection
+- ✅ Phase 5.7: Cross-Document Consistency Check
+- ✅ Updated project structure documentation
+
+### New Files Created
+- `archive/README.md` - Archive documentation
+- `MAIA-PROJECT/README.md` - Project documentation
+- `scripts/install-skills.sh` - Skill installation script
+
+### Files Updated
+- `README.md` - Now reflects framework structure
+- `docs/PROJECT-INVENTORY.md` - Added deprecation notice
+- `templates/competitive-analysis/README.md` - Added example project reference
+
+---
+
+## Skill Installation
+
+Skills are now version-controlled in `skills/local/` and synced to `~/.claude/skills/`:
+
+```bash
+# Install/update skills
+./scripts/install-skills.sh
+
+# With backup
+./scripts/install-skills.sh --backup
+
+# Preview changes
+./scripts/install-skills.sh --dry-run
+```
 
 ---
 
 **Implementation Completed:** November 25, 2025
 **Framework Version:** 1.0
 **Quality Standard:** Enterprise-grade (9.5/10)
+**Normalization Status:** ✅ Complete (Phases A-K)
