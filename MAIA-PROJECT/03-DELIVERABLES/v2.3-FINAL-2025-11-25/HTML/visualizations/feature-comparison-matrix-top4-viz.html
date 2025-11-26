@@ -24,34 +24,34 @@
         h2, h3 {
             page-break-after: avoid;
         }
+
+        /* Make gap titles stand out more */
+        .gap-critical .gap-title,
+        .gap-moderate .gap-title {
+            font-size: 1.15em;
+            font-weight: 700;
+            color: #1a365d;
+            margin-bottom: 8px;
+            border-bottom: 2px solid #4a5568;
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+
+        .advantage .gap-title {
+            font-size: 1.15em;
+            font-weight: 700;
+            color: #276749;
+            margin-bottom: 8px;
+            border-bottom: 2px solid #48bb78;
+            padding-bottom: 5px;
+            display: inline-block;
+        }
     </style>
 </head>
 <body>
     <div class="header">
         <h1>Feature Comparison Matrix</h1>
         <h2 style="margin: 10px 0; font-weight: 400;">College & Career Readiness Platforms</h2>
-    </div>
-
-    <div class="legend">
-        <h3>Legend</h3>
-        <div class="legend-items">
-            <div class="legend-item">
-                <span style="font-size: 1.3em;">✅</span>
-                <span>Full feature available</span>
-            </div>
-            <div class="legend-item">
-                <span style="font-size: 1.3em;">⚠️</span>
-                <span>Partial/Limited feature</span>
-            </div>
-            <div class="legend-item">
-                <span style="font-size: 1.3em;">❌</span>
-                <span>Not available or not mentioned</span>
-            </div>
-            <div class="legend-item">
-                <span style="font-size: 1.3em;">🔸</span>
-                <span>Unique/Standout strength for that platform</span>
-            </div>
-        </div>
     </div>
 
     <div class="section">
@@ -68,7 +68,7 @@
             </thead>
             <tbody>
                 <tr>
-                    <td class="platform-name">MaiaLearning</td>
+                    <td class="platform-name">Maia Learning</td>
                     <td>2010</td>
                     <td>International, Comprehensive CCR</td>
                     <td>Growing challenger</td>
@@ -104,6 +104,28 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+
+    <div class="legend">
+        <h3>Legend</h3>
+        <div class="legend-items">
+            <div class="legend-item">
+                <span style="font-size: 1.3em;">✅</span>
+                <span>Full feature available</span>
+            </div>
+            <div class="legend-item">
+                <span style="font-size: 1.3em;">⚠️</span>
+                <span>Partial/Limited feature</span>
+            </div>
+            <div class="legend-item">
+                <span style="font-size: 1.3em;">❌</span>
+                <span>Not available or not mentioned</span>
+            </div>
+            <div class="legend-item">
+                <span style="font-size: 1.3em;">🔸</span>
+                <span>Unique/Standout strength for that platform</span>
+            </div>
+        </div>
     </div>
 
     <div class="section">
@@ -1298,7 +1320,7 @@
             </thead>
             <tbody>
                 <tr>
-                    <td class="platform-name">MaiaLearning</td>
+                    <td class="platform-name">Maia Learning</td>
                     <td>~$10</td>
                     <td>Per-student ($2,000/200 students)</td>
                     <td>Higher pricing justified by international, comprehensive features</td>
@@ -1361,7 +1383,7 @@
             </thead>
             <tbody>
                 <tr>
-                    <td class="platform-name">MaiaLearning</td>
+                    <td class="platform-name">Maia Learning</td>
                     <td>~5-8% (est.)</td>
                     <td>18,000+ schools/universities, 2.5M+ students, 70+ countries</td>
                     <td>International (70+ countries)</td>
@@ -1533,7 +1555,7 @@
             </table>
         </div>
 
-        <div class="insights" style="margin-top: 30px; background: #e8f5e9; border-left-color: #333333;">
+        <div class="insights" style="margin-top: 30px; background: #f0f0f0; border-left-color: #333333;">
             <h4 style="color: #333333;">BOTTOM LINE</h4>
             <p style="margin-bottom: 15px;">Maia's international dominance, deep localization, counselor expertise, and comprehensive platform are powerful differentiators. However, Maia faces significant threats from:</p>
             <ul>
